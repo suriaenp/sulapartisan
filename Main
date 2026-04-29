@@ -1,0 +1,9 @@
+```text
+/
+  netlify.toml
+  public/
+    index.html
+    config.js
+  database/
+    supabase-schema.sql
+```
