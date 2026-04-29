@@ -1,0 +1,2230 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)file:///C:/Users/EventPC2/Downloads/sulap-vendor-portal.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sulap Artisan — Vendor Registration</title>
+<meta name="description" content="Sulap Artisan Vendor Registration Portal">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./Sulap Artisan — Vendor Registration_files/css2" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF8F5;--bg2:#F2EDE6;--card:#FFFFFF;
+  --text:#1C1A17;--text2:#6B6560;--text3:#A09890;
+  --accent:#8B4513;--accent2:#C4763A;--accent-light:#F5EAE0;
+  --green:#2D6A4F;--green-light:#E8F5F0;
+  --red:#B03A2E;--red-light:#FDEEEC;
+  --amber:#B7770D;--amber-light:#FEF8EC;
+  --indigo:#4338CA;--indigo-light:#EEF2FF;
+  --border:rgba(139,69,19,0.12);
+  --radius:10px;--radius-lg:16px;
+  font-family:'DM Sans',sans-serif;
+}
+body{background:var(--bg);color:var(--text);min-height:100vh}
+a{color:var(--accent);text-decoration:none}
+button{font-family:'DM Sans',sans-serif}
+
+/* NAV */
+.nav{background:var(--card);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,.05)}
+.nav-brand{display:flex;align-items:center;gap:10px;cursor:pointer}
+.nav-logo{width:36px;height:36px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-family:'Playfair Display',serif;font-size:18px;font-weight:600;overflow:hidden}
+.nav-logo img{width:100%;height:100%;object-fit:cover}
+.logo-preview{width:70px;height:70px;border-radius:12px;background:var(--accent);color:white;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:28px;overflow:hidden}
+.logo-preview img{width:100%;height:100%;object-fit:cover}
+.nav-brand-text{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--accent)}
+.nav-brand-sub{font-size:11px;color:var(--text3)}
+.nav-tabs{display:flex;gap:4px}
+.nav-tab{padding:7px 14px;border-radius:7px;font-size:13px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--text2);transition:all .15s}
+.nav-tab.active{background:var(--accent-light);color:var(--accent)}
+.nav-tab:hover:not(.active){background:var(--bg2)}
+.nav-user{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2)}
+.nav-avatar{width:30px;height:30px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--accent)}
+
+/* VIEWS */
+.view{display:none;padding:2rem 1.5rem;max-width:960px;margin:0 auto}
+.view.active{display:block}
+
+/* HERO */
+.hero{text-align:center;padding:4rem 1rem 3rem}
+.hero-badge{display:inline-block;background:var(--accent-light);color:var(--accent);font-size:12px;font-weight:500;padding:5px 14px;border-radius:20px;margin-bottom:1.5rem}
+.hero-title{font-family:'Playfair Display',serif;font-size:42px;font-weight:500;line-height:1.2;margin-bottom:1rem}
+.hero-title span{color:var(--accent2)}
+.hero-sub{font-size:16px;color:var(--text2);max-width:520px;margin:0 auto 2.5rem;line-height:1.7}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:3rem}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;text-align:left}
+.hero-card-icon{font-size:24px;margin-bottom:10px}
+.hero-card-title{font-weight:500;font-size:15px;margin-bottom:6px}
+.hero-card-sub{font-size:13px;color:var(--text2);line-height:1.6}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.25rem}
+.card-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:500;margin-bottom:4px}
+.card-sub{font-size:13px;color:var(--text2);margin-bottom:1.5rem}
+
+/* CATEGORY CARDS */
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.cat-option{border:1.5px solid var(--border);border-radius:var(--radius);padding:12px 14px;cursor:pointer;transition:all .15s;position:relative}
+.cat-option:hover{border-color:var(--accent2);background:var(--accent-light)}
+.cat-option.selected{border-color:var(--accent);background:var(--accent-light)}
+.cat-option input[type=radio]{position:absolute;opacity:0;width:0;height:0}
+.cat-name{font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px}
+.cat-desc{font-size:11.5px;color:var(--text3);line-height:1.5}
+.cat-option.selected .cat-name{color:var(--accent)}
+.cat-option.selected .cat-desc{color:var(--accent2);opacity:.75}
+
+/* FORMS */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.field{display:flex;flex-direction:column;gap:6px}
+.field-full{grid-column:1/-1}
+.field label{font-size:13px;font-weight:500;color:var(--text2)}
+.field input,.field textarea,.field select{padding:10px 13px;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);outline:none;transition:border-color .15s,background .15s;-webkit-appearance:none}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--accent2);background:white;box-shadow:0 0 0 3px rgba(196,118,58,.1)}
+.field textarea{resize:vertical;min-height:90px;line-height:1.6}
+.field-hint{font-size:12px;color:var(--text3);margin-top:2px}
+.field-error{font-size:12px;color:var(--red);display:none}
+.field.has-error input,.field.has-error select,.field.has-error textarea{border-color:var(--red);background:var(--red-light)}
+.field.has-error .field-error{display:block}
+.required-star{color:var(--red);margin-left:2px}
+
+/* SOCIAL HANDLES */
+.social-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.social-input-wrap{position:relative}
+.social-input-wrap .social-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:14px;pointer-events:none}
+.social-input-wrap input{padding-left:30px}
+
+/* UPLOAD */
+.upload-zone{border:2px dashed var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);position:relative}
+.upload-zone:hover,.upload-zone.drag-over{border-color:var(--accent2);background:var(--accent-light)}
+.upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;z-index:2}
+.upload-zone-icon{font-size:28px;margin-bottom:8px}
+.upload-zone-label{font-size:14px;font-weight:500;color:var(--text)}
+.upload-zone-hint{font-size:12px;color:var(--text3);margin-top:4px}
+.upload-zone.has-file{border-color:var(--green);border-style:solid;background:var(--green-light)}
+.upload-zone.has-file .upload-zone-label{color:var(--green)}
+
+/* PHOTO GRID */
+.photos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.photo-thumb{aspect-ratio:1;background:var(--bg2);border-radius:var(--radius);overflow:hidden;position:relative;border:1.5px dashed var(--border);display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:11px;cursor:pointer;transition:all .15s;flex-direction:column;gap:4px}
+.photo-thumb:hover{border-color:var(--accent2);background:var(--accent-light)}
+.photo-thumb.has-file{border-style:solid;border-color:var(--accent2);background:var(--accent-light)}
+.photo-thumb .add-icon{font-size:20px;opacity:.4}
+.photo-remove{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.5);color:white;border:none;border-radius:50%;width:20px;height:20px;font-size:12px;cursor:pointer;display:none;align-items:center;justify-content:center}
+.photo-thumb.has-file .photo-remove{display:flex}
+
+/* EVENT PROFILE PIC */
+.event-pic-thumb{width:80px;height:80px;border-radius:var(--radius);object-fit:cover;border:1px solid var(--border)}
+.event-pic-placeholder{width:80px;height:80px;border-radius:var(--radius);background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+
+/* STEPS */
+.steps{display:flex;align-items:center;margin-bottom:2rem}
+.step{display:flex;align-items:center;gap:8px}
+.step-num{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;background:var(--bg2);color:var(--text2);flex-shrink:0;border:1.5px solid var(--border);transition:all .25s}
+.step.active .step-num{background:var(--accent);color:white;border-color:var(--accent)}
+.step.done .step-num{background:var(--green);color:white;border-color:var(--green)}
+.step-label{font-size:12px;color:var(--text2);white-space:nowrap}
+.step.active .step-label{color:var(--text);font-weight:500}
+.step.done .step-label{color:var(--green)}
+.step-connector{flex:1;height:1.5px;background:var(--border);margin:0 8px;min-width:20px}
+.step-connector.done{background:var(--green)}
+
+/* BUTTONS */
+.btn{padding:11px 22px;border-radius:var(--radius);font-size:14px;font-weight:500;cursor:pointer;transition:all .15s;border:none;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:6px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-primary{background:var(--accent);color:white}
+.btn-primary:hover:not(:disabled){background:#7A3B10;transform:translateY(-1px)}
+.btn-secondary{background:var(--bg2);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover:not(:disabled){background:#e8e0d8}
+.btn-ghost{background:transparent;color:var(--text2)}
+.btn-ghost:hover{background:var(--bg2);color:var(--text)}
+.btn-success{background:var(--green);color:white}
+.btn-success:hover{background:#235c43}
+.btn-danger{background:var(--red);color:white}
+.btn-danger:hover{background:#9a3226}
+.btn-indigo{background:var(--indigo);color:white}
+.btn-indigo:hover{background:#3730a3}
+.btn-amber{background:var(--amber);color:white}
+.btn-sm{padding:7px 14px;font-size:12px}
+.btn-lg{padding:14px 28px;font-size:15px}
+.btn-block{width:100%;justify-content:center}
+
+/* BADGES */
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:500}
+.badge-pending{background:var(--amber-light);color:var(--amber)}
+.badge-approved{background:var(--green-light);color:var(--green)}
+.badge-rejected{background:var(--red-light);color:var(--red)}
+.badge-applied{background:var(--indigo-light);color:var(--indigo)}
+.badge-selected{background:var(--green-light);color:var(--green)}
+.badge-confirmed{background:var(--green-light);color:var(--green)}
+.badge-payment-pending{background:var(--amber-light);color:var(--amber)}
+.badge-active{background:var(--green-light);color:var(--green)}
+.badge-draft{background:var(--bg2);color:var(--text2)}
+.badge-collected{background:var(--indigo-light);color:var(--indigo)}
+.badge-returned{background:var(--green-light);color:var(--green)}
+
+/* ALERTS */
+.alert{padding:12px 16px;border-radius:var(--radius);font-size:13px;margin-bottom:1rem;display:flex;align-items:flex-start;gap:10px;line-height:1.6}
+.alert-icon{flex-shrink:0;font-size:15px}
+.alert-success{background:var(--green-light);color:var(--green);border:1px solid rgba(45,106,79,.2)}
+.alert-info{background:var(--indigo-light);color:var(--indigo);border:1px solid rgba(79,70,229,.2)}
+.alert-warning{background:var(--amber-light);color:var(--amber);border:1px solid rgba(183,119,13,.2)}
+.alert-error{background:var(--red-light);color:var(--red);border:1px solid rgba(176,58,46,.2)}
+
+/* TABLE */
+.table-container{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13px;background:white}
+th{text-align:left;padding:11px 14px;font-weight:500;color:var(--text2);border-bottom:1px solid var(--border);background:var(--bg);font-size:11px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+td{padding:12px 14px;border-bottom:1px solid rgba(139,69,19,.06);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--accent-light)}
+
+/* EVENT CARDS */
+.event-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:1.25rem;transition:border-color .15s;margin-bottom:12px}
+.event-card:hover{border-color:var(--accent2)}
+.event-date-box{background:var(--accent);color:white;border-radius:var(--radius);padding:8px 14px;text-align:center;min-width:58px;flex-shrink:0}
+.date-month{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.8px;opacity:.8}
+.date-day{font-family:'Playfair Display',serif;font-size:26px;line-height:1.1}
+.event-info{flex:1}
+.event-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:500;margin-bottom:5px}
+.event-meta{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--text2);margin-bottom:8px}
+.event-fee-box{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.fee-pill{background:var(--accent-light);color:var(--accent);font-size:12px;font-weight:500;padding:4px 10px;border-radius:20px}
+.fee-pill.fnb{background:var(--green-light);color:var(--green)}
+.fee-pill.nonfnb{background:var(--indigo-light);color:var(--indigo)}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:1.5rem}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem}
+.stat-label{font-size:11px;color:var(--text2);font-weight:500;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.stat-value{font-family:'Playfair Display',serif;font-size:32px;font-weight:500;line-height:1}
+.stat-delta{font-size:12px;color:var(--green);margin-top:4px}
+
+/* PILL TABS */
+.pill-tabs{display:flex;gap:4px;background:var(--bg2);padding:4px;border-radius:var(--radius);margin-bottom:1.5rem;overflow-x:auto;flex-wrap:nowrap}
+.pill-tab{flex-shrink:0;padding:8px 14px;border-radius:7px;font-size:13px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--text2);transition:all .15s;white-space:nowrap}
+.pill-tab.active{background:white;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+
+/* VENDOR AVATAR */
+.v-avatar{width:38px;height:38px;border-radius:9px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:var(--accent);flex-shrink:0;font-family:'Playfair Display',serif}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1000;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{display:flex}
+.modal-box{background:white;border-radius:var(--radius-lg);padding:2rem;max-width:580px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.25rem}
+.modal-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:500}
+.modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--text3);line-height:1;padding:0 4px}
+.modal-close:hover{color:var(--text)}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;right:2rem;background:#1C1A17;color:white;padding:12px 20px;border-radius:var(--radius);font-size:14px;z-index:2000;opacity:0;transform:translateY(8px);transition:all .25s;pointer-events:none;max-width:320px;display:flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(0,0,0,.25)}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.toast-success{background:var(--green)}
+.toast.toast-error{background:var(--red)}
+
+/* PARKING GRID */
+.parking-day-col{min-width:160px}
+.parking-input{width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);font-size:12px;font-family:'DM Sans',sans-serif;outline:none;background:var(--bg)}
+.parking-input:focus{border-color:var(--accent2);background:white}
+.parking-input.filled{border-color:var(--green);background:var(--green-light)}
+
+/* MISC */
+.divider{height:1px;background:var(--border);margin:1.5rem 0}
+.section-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem;gap:1rem;flex-wrap:wrap}
+.section-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:500}
+.section-sub{font-size:13px;color:var(--text2);margin-top:3px}
+.actions{display:flex;gap:10px;justify-content:flex-end;margin-top:1.5rem;flex-wrap:wrap}
+.tag{display:inline-block;background:var(--bg2);color:var(--text2);font-size:11px;padding:3px 9px;border-radius:20px;font-weight:500}
+.tag.fnb{background:var(--green-light);color:var(--green)}
+.tag.nonfnb{background:var(--indigo-light);color:var(--indigo)}
+.empty-state{text-align:center;padding:3rem 1rem;color:var(--text2)}
+.empty-icon{font-size:40px;margin-bottom:12px}
+.empty-title{font-size:16px;font-weight:500;margin-bottom:6px;color:var(--text)}
+.search-bar{display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap}
+.search-bar input{flex:1;min-width:180px;padding:9px 13px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px;background:white;outline:none;font-family:'DM Sans',sans-serif}
+.search-bar input:focus{border-color:var(--accent2)}
+.search-bar select{padding:9px 13px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px;background:white;outline:none;font-family:'DM Sans',sans-serif;cursor:pointer}
+.kv-row{display:flex;padding:8px 0;border-bottom:1px solid rgba(139,69,19,.06);font-size:14px}
+.kv-row:last-child{border-bottom:none}
+.kv-key{width:160px;color:var(--text2);flex-shrink:0;font-size:13px}
+.kv-val{flex:1}
+
+@media(max-width:680px){
+  .form-grid,.cat-grid,.social-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-cards{grid-template-columns:1fr}
+  .hero-title{font-size:30px}
+  .photos-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-brand-sub{display:none}
+  .pill-tabs{gap:2px}
+  .pill-tab{padding:7px 10px;font-size:12px}
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./config.js"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand" onclick="goHome()">
+    <div class="nav-logo" id="nav-logo">S</div>
+    <div>
+      <div class="nav-brand-text">Sulap Artisan</div>
+      <div class="nav-brand-sub">Vendor Registration</div>
+    </div>
+  </div>
+  <div class="nav-tabs">
+    <button class="nav-tab" id="nav-home" onclick="showView(&#39;home&#39;)">Home</button>
+    <button class="nav-tab" id="nav-register" onclick="showView(&#39;register&#39;)">Apply</button>
+    <button class="nav-tab active" id="nav-portal" onclick="showView(&#39;portal-login&#39;)">Vendor Portal</button>
+    <button class="nav-tab" id="nav-admin" onclick="showView(&#39;admin-login&#39;)">Admin</button>
+  </div>
+  <div class="nav-user" id="nav-user-display" style="display: flex;">
+    <div class="nav-avatar" id="nav-avatar-initials">TL</div>
+    <span id="nav-user-name">Tanah Liat Studio</span>
+    <button class="btn btn-ghost btn-sm" onclick="logout()">Sign out</button>
+  </div>
+</nav>
+
+<!-- ====== HOME ====== -->
+<div id="view-home" class="view">
+  <div class="hero">
+    <div class="hero-badge" id="hero-badge-text">🌿 Now accepting 2025 applications</div>
+    <h1 class="hero-title" id="hero-title-text">Bringing artisan makers<br>to <span>Sulap Markets</span></h1>
+    <p class="hero-sub" id="hero-subtitle-text">Apply to become a Sulap vendor, showcase your craft at curated artisan markets, and manage everything from one place.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary btn-lg" onclick="showView(&#39;register&#39;)">Apply as a Vendor</button>
+      <button class="btn btn-secondary btn-lg" onclick="showView(&#39;portal-login&#39;)">Vendor Portal</button>
+    </div>
+    <div class="hero-cards">
+      <div class="hero-card"><div class="hero-card-icon">📋</div><div class="hero-card-title">Register</div><div class="hero-card-sub">Fill in your business details and upload product photos. We review within 5–7 days.</div></div>
+      <div class="hero-card"><div class="hero-card-icon">🗓️</div><div class="hero-card-title">Apply for Events</div><div class="hero-card-sub">Once approved, browse and apply for upcoming Sulap market events.</div></div>
+      <div class="hero-card"><div class="hero-card-icon">✅</div><div class="hero-card-title">Confirm &amp; Pay</div><div class="hero-card-sub">Selected vendors upload payment receipts and download invoices — all here.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== VENDOR REGISTRATION ====== -->
+<div id="view-register" class="view">
+  <div style="max-width:680px;margin:0 auto">
+
+    <div class="steps" id="reg-steps-bar">
+      <div class="step active" id="stepind-1"><div class="step-num">1</div><div class="step-label">Business Info</div></div>
+      <div class="step-connector" id="conn-1"></div>
+      <div class="step" id="stepind-2"><div class="step-num">2</div><div class="step-label">Products &amp; Photos</div></div>
+      <div class="step-connector" id="conn-2"></div>
+      <div class="step" id="stepind-3"><div class="step-num">3</div><div class="step-label">Review &amp; Submit</div></div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div id="reg-step-1">
+      <div class="card">
+        <div class="card-title">Business Information</div>
+        <div class="card-sub">Fields marked <span style="color:var(--red)">*</span> are required.</div>
+        <div class="form-grid">
+          <div class="field" id="f-bizname">
+            <label>Business / Brand Name <span class="required-star">*</span></label>
+            <input type="text" id="inp-bizname" placeholder="e.g. Tanah Liat Studio" autocomplete="organization">
+            <div class="field-error">Please enter your business name</div>
+          </div>
+          <div class="field" id="f-contact">
+            <label>Contact Person <span class="required-star">*</span></label>
+            <input type="text" id="inp-contact" placeholder="Full name" autocomplete="name">
+            <div class="field-error">Please enter contact person name</div>
+          </div>
+          <div class="field" id="f-email">
+            <label>Email Address <span class="required-star">*</span></label>
+            <input type="email" id="inp-email" placeholder="you@example.com" autocomplete="email">
+            <div class="field-error">Please enter a valid email</div>
+          </div>
+          <div class="field" id="f-phone">
+            <label>Phone / WhatsApp <span class="required-star">*</span></label>
+            <input type="tel" id="inp-phone" placeholder="+60 12-345 6789" autocomplete="tel">
+            <div class="field-error">Please enter your phone number</div>
+          </div>
+          <div class="field" id="f-state">
+            <label>State <span class="required-star">*</span></label>
+            <select id="inp-state">
+              <option value="">Select state</option>
+              <option>Kuala Lumpur</option><option>Selangor</option><option>Penang</option>
+              <option>Johor</option><option>Perak</option><option>Kedah</option>
+              <option>Kelantan</option><option>Terengganu</option><option>Pahang</option>
+              <option>Negeri Sembilan</option><option>Melaka</option><option>Sabah</option>
+              <option>Sarawak</option><option>Putrajaya</option><option>Labuan</option>
+            </select>
+            <div class="field-error">Please select your state</div>
+          </div>
+          <div class="field" id="f-carplate">
+            <label>Car Plate Number <span class="required-star">*</span></label>
+            <input type="text" id="inp-carplate" placeholder="e.g. WXY 1234" style="text-transform:uppercase">
+            <div class="field-hint">For complimentary vendor parking (1 entry per day)</div>
+            <div class="field-error">Please enter your car plate number</div>
+          </div>
+          <div class="field field-full" id="f-category">
+            <label>Product Category <span class="required-star">*</span></label>
+            <div class="cat-grid" id="cat-grid">
+              <label class="cat-option" onclick="selectCat(this,&#39;Food &amp; Beverage (F&amp;B)&#39;)">
+                <input type="radio" name="category" value="Food &amp; Beverage (F&amp;B)">
+                <div class="cat-name">🍜 Food &amp; Beverage (F&amp;B)</div>
+                <div class="cat-desc">Ready-to-eat food, baked goods, snacks, coffee, juices, specialty drinks.</div>
+              </label>
+              <label class="cat-option" onclick="selectCat(this,&#39;Handmade Crafts &amp; Art&#39;)">
+                <input type="radio" name="category" value="Handmade Crafts &amp; Art">
+                <div class="cat-name">🏺 Handmade Crafts &amp; Art</div>
+                <div class="cat-desc">Accessories, pottery, candles, home decor, illustrations, and other artisanal goods.</div>
+              </label>
+              <label class="cat-option" onclick="selectCat(this,&#39;Fashion &amp; Apparel&#39;)">
+                <input type="radio" name="category" value="Fashion &amp; Apparel">
+                <div class="cat-name">👗 Fashion &amp; Apparel</div>
+                <div class="cat-desc">Clothing (including thrift/vintage), handmade wearables, bags, and textiles.</div>
+              </label>
+              <label class="cat-option" onclick="selectCat(this,&#39;Beauty, Wellness &amp; Personal Care&#39;)">
+                <input type="radio" name="category" value="Beauty, Wellness &amp; Personal Care">
+                <div class="cat-name">🧴 Beauty, Wellness &amp; Personal Care</div>
+                <div class="cat-desc">Skincare, perfumes, soaps, supplements, essential oils, and self-care products.</div>
+              </label>
+              <label class="cat-option" onclick="selectCat(this,&#39;Lifestyle &amp; Miscellaneous Goods&#39;)" style="grid-column:1/-1">
+                <input type="radio" name="category" value="Lifestyle &amp; Miscellaneous Goods">
+                <div class="cat-name">🎁 Lifestyle &amp; Miscellaneous Goods</div>
+                <div class="cat-desc">General or curated products that don't fit above — e.g. stationery, small gadgets, gift items, specialty retail.</div>
+              </label>
+            </div>
+            <div class="field-error" id="cat-error">Please select a product category</div>
+          </div>
+          <div class="field field-full" id="f-desc">
+            <label>Business Description <span class="required-star">*</span></label>
+            <textarea id="inp-desc" placeholder="Tell us your story — what you sell, what makes your brand unique..."></textarea>
+            <div class="field-error">Please describe your business</div>
+          </div>
+          <!-- Social Media -->
+          <div class="field field-full">
+            <label>Social Media Handles</label>
+            <div class="social-grid">
+              <div class="social-input-wrap">
+                <span class="social-icon">📸</span>
+                <input type="text" id="inp-instagram" placeholder="Instagram @handle">
+              </div>
+              <div class="social-input-wrap">
+                <span class="social-icon">📘</span>
+                <input type="text" id="inp-facebook" placeholder="Facebook page/handle">
+              </div>
+              <div class="social-input-wrap">
+                <span class="social-icon">🎵</span>
+                <input type="text" id="inp-tiktok" placeholder="TikTok @handle">
+              </div>
+            </div>
+            <div class="field-hint">Optional — provide whichever applies</div>
+          </div>
+          <div class="field">
+            <label>Website</label>
+            <input type="url" id="inp-website" placeholder="https://yoursite.com">
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-secondary" onclick="showView(&#39;home&#39;)">Cancel</button>
+        <button class="btn btn-primary" onclick="validateStep1()">Next: Products &amp; Photos →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div id="reg-step-2" style="display:none">
+      <div class="card">
+        <div class="card-title">Product Photos</div>
+        <div class="card-sub">Upload 1–6 clear product photos. JPG or PNG, max 5MB each. At least 1 required.</div>
+        <div class="photos-grid" id="photo-grid">
+    <div class="photo-thumb" id="pthumb-0" onclick="triggerPhoto(0)">
+      <div class="add-icon">+</div>
+      <div style="font-size:11px;color:var(--text3)">Photo 1</div>
+      <button class="photo-remove" onclick="removePhoto(event,0)">×</button>
+    </div>
+    <div class="photo-thumb" id="pthumb-1" onclick="triggerPhoto(1)">
+      <div class="add-icon">+</div>
+      <div style="font-size:11px;color:var(--text3)">Photo 2</div>
+      <button class="photo-remove" onclick="removePhoto(event,1)">×</button>
+    </div>
+    <div class="photo-thumb" id="pthumb-2" onclick="triggerPhoto(2)">
+      <div class="add-icon">+</div>
+      <div style="font-size:11px;color:var(--text3)">Photo 3</div>
+      <button class="photo-remove" onclick="removePhoto(event,2)">×</button>
+    </div>
+    <div class="photo-thumb" id="pthumb-3" onclick="triggerPhoto(3)">
+      <div class="add-icon">+</div>
+      <div style="font-size:11px;color:var(--text3)">Photo 4</div>
+      <button class="photo-remove" onclick="removePhoto(event,3)">×</button>
+    </div>
+    <div class="photo-thumb" id="pthumb-4" onclick="triggerPhoto(4)">
+      <div class="add-icon">+</div>
+      <div style="font-size:11px;color:var(--text3)">Photo 5</div>
+      <button class="photo-remove" onclick="removePhoto(event,4)">×</button>
+    </div>
+    <div class="photo-thumb" id="pthumb-5" onclick="triggerPhoto(5)">
+      <div class="add-icon">+</div>
+      <div style="font-size:11px;color:var(--text3)">Photo 6</div>
+      <button class="photo-remove" onclick="removePhoto(event,5)">×</button>
+    </div></div>
+        <input type="file" id="hidden-photo-input" accept="image/jpeg,image/png,image/webp" style="display:none" onchange="handlePhotoFile(this)">
+        <div id="photo-error" class="field-error" style="margin-top:8px"></div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="font-size:16px">Additional Details</div>
+        <div class="form-grid">
+          <div class="field">
+            <label>Price Range</label>
+            <select id="inp-price">
+              <option>Under RM 50</option>
+              <option>RM 50 – RM 150</option>
+              <option>RM 150 – RM 500</option>
+              <option>RM 500 – RM 1,000</option>
+              <option>Above RM 1,000</option>
+              <option>Mixed range</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Previous Event Experience</label>
+            <input type="text" id="inp-experience" placeholder="e.g. Publika Sunday Market, local bazaars">
+          </div>
+          <div class="field field-full" id="f-power">
+            <label>Power Supply Needed</label>
+            <textarea id="inp-power" placeholder="List any machines or equipment you&#39;ll bring and their voltage requirements. E.g. Blender 220V, Coffee machine 13A, etc. Leave blank if none." style="min-height:70px"></textarea>
+            <div class="field-hint">We'll arrange power supply based on your requirements.</div>
+          </div>
+          <div class="field field-full">
+            <label>Booth / Display Notes</label>
+            <textarea id="inp-booth" placeholder="Any special display needs, dimensions, accessibility requirements..." style="min-height:60px"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-secondary" onclick="goStep(1)">← Back</button>
+        <button class="btn btn-primary" onclick="validateStep2()">Review Application →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div id="reg-step-3" style="display:none">
+      <div class="card">
+        <div class="card-title">Review Your Application</div>
+        <div class="card-sub">Please check all details before submitting</div>
+        <div id="review-body"></div>
+        <div class="divider"></div>
+        <div class="alert alert-info">
+          <span class="alert-icon">ℹ️</span>
+          <div>By submitting you confirm all information is accurate. Sulap may use your product photos for event promotion. Applications are reviewed within <strong>5–7 business days</strong>.</div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-secondary" onclick="goStep(2)">← Edit</button>
+        <button class="btn btn-primary" id="submit-btn" onclick="submitApplication()">Submit Application</button>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div id="reg-success" style="display:none;text-align:center;padding:4rem 1rem">
+      <div style="font-size:56px;margin-bottom:1.5rem">🎉</div>
+      <h2 style="font-family:&#39;Playfair Display&#39;,serif;font-size:28px;font-weight:500;margin-bottom:10px">Application Submitted!</h2>
+      <p style="color:var(--text2);font-size:15px;max-width:420px;margin:0 auto 2rem;line-height:1.7">Thank you for applying to Sulap Artisan Markets. We'll review your application carefully and be in touch within 5–7 business days.</p>
+      <div class="alert alert-success" style="max-width:380px;margin:0 auto 1.5rem;justify-content:center">
+        <span class="alert-icon">✓</span>
+        <div>Your reference ID: <strong id="display-ref-id">SUL-2025-XXXX</strong></div>
+      </div>
+      <p style="font-size:13px;color:var(--text3);margin-bottom:2rem">Save this ID to access your vendor portal</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="showView(&#39;portal-login&#39;)">Go to Vendor Portal</button>
+        <button class="btn btn-secondary" onclick="showView(&#39;home&#39;)">Back to Home</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== VENDOR PORTAL LOGIN ====== -->
+<div id="view-portal-login" class="view">
+  <div style="max-width:420px;margin:2rem auto">
+    <div class="card">
+      <div class="card-title">Vendor Portal</div>
+      <div class="card-sub">Sign in to manage your application, events, and documents</div>
+      <div class="field" style="margin-bottom:1rem">
+        <label>Email Address</label>
+        <input type="email" id="portal-email" placeholder="you@example.com" value="aishah@tanahliat.com">
+      </div>
+      <div class="field" style="margin-bottom:1.5rem">
+        <label>Reference ID</label>
+        <input type="text" id="portal-ref" placeholder="e.g. SUL-2025-0038" value="SUL-2025-0038">
+        <div class="field-hint">Sent to you via email upon application</div>
+      </div>
+      <button class="btn btn-primary btn-block" onclick="vendorLogin()">Sign In</button>
+      <div class="divider"></div>
+      <p style="text-align:center;font-size:13px;color:var(--text2)">First time? <a href="file:///C:/Users/EventPC2/Downloads/sulap-vendor-portal.html#" onclick="showView(&#39;register&#39;)">Apply as a vendor</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ====== VENDOR DASHBOARD ====== -->
+<div id="view-portal-dashboard" class="view active">
+  <div class="section-header">
+    <div>
+      <div class="section-title">Welcome back, <span style="color:var(--accent)" id="vd-vendor-name">Tanah Liat Studio</span></div>
+      <div class="section-sub" id="vd-vendor-meta">Ref: SUL-2025-0038 · Handmade Crafts &amp; Art · Kuala Lumpur</div>
+    </div>
+    <span class="badge badge-approved" id="vd-status-badge">Approved</span>
+  </div>
+  <div class="pill-tabs">
+    <button class="pill-tab" onclick="vpTab(this,&#39;vt-status&#39;)">My Application</button>
+    <button class="pill-tab active" onclick="vpTab(this,&#39;vt-events&#39;)">Available Events</button>
+    <button class="pill-tab" onclick="vpTab(this,&#39;vt-myevents&#39;)">My Events</button>
+    <button class="pill-tab" onclick="vpTab(this,&#39;vt-docs&#39;)">Documents</button>
+  </div>
+
+  <div id="vt-status" style="display: none;">
+    <div class="alert alert-success"><span class="alert-icon">✓</span><div>Your application is <strong>approved</strong>. You can now apply for events.</div></div>
+    <div class="card">
+      <div class="card-title" style="font-size:16px;margin-bottom:1rem">Application Summary</div>
+      <div id="vt-application-summary"><div class="kv-row"><div class="kv-key">Reference ID</div><div class="kv-val">SUL-2025-0038</div></div><div class="kv-row"><div class="kv-key">Contact</div><div class="kv-val">Aishah Ramli</div></div><div class="kv-row"><div class="kv-key">Email</div><div class="kv-val">aishah@tanahliat.com</div></div><div class="kv-row"><div class="kv-key">Category</div><div class="kv-val">Handmade Crafts &amp; Art</div></div><div class="kv-row"><div class="kv-key">Location</div><div class="kv-val">Kuala Lumpur</div></div><div class="kv-row"><div class="kv-key">Car Plate</div><div class="kv-val">WXY 5599</div></div><div class="kv-row"><div class="kv-key">Submitted</div><div class="kv-val">12 May 2025</div></div><div class="kv-row"><div class="kv-key">Status</div><div class="kv-val"><span class="badge badge-approved">approved</span></div></div><div class="kv-row"><div class="kv-key">Social</div><div class="kv-val">📸 @tanahliatstudio  📘 tanahliatstudio</div></div><div class="kv-row"><div class="kv-key">Photos</div><div class="kv-val">4 submitted</div></div></div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:16px;margin-bottom:12px">Submitted Product Photos</div>
+      <div class="photos-grid">
+        <div class="photo-thumb" style="background:#E8D5C0"><span style="font-size:20px">🏺</span></div>
+        <div class="photo-thumb" style="background:#D5C0A8"><span style="font-size:20px">🫙</span></div>
+        <div class="photo-thumb" style="background:#C4AC94"><span style="font-size:20px">🍶</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="vt-events" style="display: block;">
+    <div class="alert alert-info"><span class="alert-icon">ℹ️</span><div>Apply for events below. Selection is curated — you'll be notified within 3–5 days of applying.</div></div>
+    <div id="vt-events-list"><div class="event-card">
+      <div class="event-pic-placeholder">📸</div>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--accent);color:white;border-radius:var(--radius);padding:8px 12px;min-width:54px;flex-shrink:0;text-align:center">
+        <div class="date-month">Jun</div>
+        <div class="date-day">14</div>
+        <div style="font-size:10px;opacity:.8;margin-top:2px">2d</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">Sulap Makers Market — TTDI</div>
+        <div class="event-meta">
+          <span>📍 TTDI Park, KL</span>
+          <span>🗓 14–15 Jun 2025</span>
+          <span>🕒 9am – 6pm</span>
+          <span>📊 4 applied</span>
+        </div>
+        <div class="event-fee-box">
+          <span class="fee-pill nonfnb">Join Fee: RM 250/day</span>
+          <span class="fee-pill">Total 2 days: RM 500</span>
+        </div>
+      </div>
+      <div style="flex-shrink:0;display:flex;align-items:center">
+        <span class="badge badge-applied">Applied</span>
+      </div>
+    </div><div class="event-card">
+      <div class="event-pic-placeholder">📸</div>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--accent);color:white;border-radius:var(--radius);padding:8px 12px;min-width:54px;flex-shrink:0;text-align:center">
+        <div class="date-month">Jul</div>
+        <div class="date-day">5</div>
+        <div style="font-size:10px;opacity:.8;margin-top:2px">2d</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">Artisan Weekend — Publika</div>
+        <div class="event-meta">
+          <span>📍 Publika Mall</span>
+          <span>🗓 5–6 Jul 2025</span>
+          <span>🕒 10am – 9pm</span>
+          <span>📊 3 applied</span>
+        </div>
+        <div class="event-fee-box">
+          <span class="fee-pill nonfnb">Join Fee: RM 380/day</span>
+          <span class="fee-pill">Total 2 days: RM 760</span>
+        </div>
+      </div>
+      <div style="flex-shrink:0;display:flex;align-items:center">
+        <span class="badge badge-applied">Applied</span>
+      </div>
+    </div><div class="event-card">
+      <div class="event-pic-placeholder">📸</div>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--accent);color:white;border-radius:var(--radius);padding:8px 12px;min-width:54px;flex-shrink:0;text-align:center">
+        <div class="date-month">Aug</div>
+        <div class="date-day">23</div>
+        <div style="font-size:10px;opacity:.8;margin-top:2px">3d</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">Merdeka Craft Fair</div>
+        <div class="event-meta">
+          <span>📍 Dataran Merdeka, KL</span>
+          <span>🗓 23–25 Aug 2025</span>
+          <span>🕒 8am – 8pm</span>
+          <span>📊 0 applied</span>
+        </div>
+        <div class="event-fee-box">
+          <span class="fee-pill nonfnb">Join Fee: RM 200/day</span>
+          <span class="fee-pill">Total 3 days: RM 600</span>
+        </div>
+      </div>
+      <div style="flex-shrink:0;display:flex;align-items:center">
+        <button class="btn btn-primary btn-sm" onclick="openApplyEvent(&#39;E003&#39;)">Apply</button>
+      </div>
+    </div></div>
+  </div>
+
+  <div id="vt-myevents" style="display: none;">
+    <div id="vt-myevents-list"><div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+        <div>
+          <div style="font-weight:500;font-size:15px">Sulap Makers Market — TTDI</div>
+          <div style="font-size:12px;color:var(--text2)">📍 TTDI Park, KL &nbsp;·&nbsp; 🗓 14–15 Jun 2025 (2 days)</div>
+          <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
+            <span class="fee-pill">RM 250/day</span>
+            <span class="fee-pill">Total: RM 500</span>
+          </div>
+        </div>
+        <span class="badge badge-selected">selected</span>
+      </div>
+      
+        <div class="alert alert-warning"><span class="alert-icon">⚠️</span><div>You've been selected! Please upload your payment receipt to confirm your spot. Total payable: <strong>RM 500</strong></div></div>
+        <div class="field">
+          <label>Upload Payment Receipt</label>
+          <div class="upload-zone" id="rec-zone-E001">
+            <input type="file" accept=".pdf,.jpg,.jpeg,.png" onchange="handleReceiptUpload(this,&#39;E001&#39;)">
+            <div class="upload-zone-icon">📄</div>
+            <div class="upload-zone-label">Click or drag receipt here</div>
+            <div class="upload-zone-hint">PDF, JPG or PNG — bank transfer screenshot accepted</div>
+          </div>
+          <div id="rec-status-E001"></div>
+        </div>
+      
+      </div><div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+        <div>
+          <div style="font-weight:500;font-size:15px">Artisan Weekend — Publika</div>
+          <div style="font-size:12px;color:var(--text2)">📍 Publika Mall &nbsp;·&nbsp; 🗓 5–6 Jul 2025 (2 days)</div>
+          <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
+            <span class="fee-pill">RM 380/day</span>
+            <span class="fee-pill">Total: RM 760</span>
+          </div>
+        </div>
+        <span class="badge badge-confirmed">confirmed</span>
+      </div>
+      
+      
+        <div class="alert alert-success"><span class="alert-icon">✓</span><div>Confirmed! Your invoice is ready to download.</div></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-secondary btn-sm" onclick="downloadFile(&#39;INV-2025-007.pdf&#39;)">⬇ Download Invoice</button>
+          <button class="btn btn-ghost btn-sm" onclick="downloadFile(&#39;receipt_tanahliat.pdf&#39;)">View Receipt</button>
+        </div>
+      </div></div>
+  </div>
+
+  <div id="vt-docs" style="display:none">
+    <div class="table-container">
+      <table>
+        <thead><tr><th>Document</th><th>Event</th><th>Date</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody id="vt-docs-table"><tr><td>Invoice</td><td style="color:var(--text2)">Artisan Weekend — Publika</td><td style="color:var(--text2)">—</td><td><span class="badge badge-approved">Available</span></td><td><button class="btn btn-ghost btn-sm" onclick="downloadFile(&#39;INV-2025-007.pdf&#39;)">⬇</button></td></tr><tr><td>Payment Receipt</td><td style="color:var(--text2)">Artisan Weekend — Publika</td><td style="color:var(--text2)">—</td><td><span class="badge badge-approved">Submitted</span></td><td><button class="btn btn-ghost btn-sm">View</button></td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ====== ADMIN LOGIN ====== -->
+<div id="view-admin-login" class="view">
+  <div style="max-width:420px;margin:2rem auto">
+    <div class="card">
+      <div class="card-title">Admin Panel</div>
+      <div class="card-sub">Sulap organiser access only</div>
+      <div class="field" style="margin-bottom:1rem">
+        <label>Admin Email</label>
+        <input type="email" id="admin-email" placeholder="admin@sulapmarket.com" value="admin@sulapmarket.com">
+      </div>
+      <div class="field" style="margin-bottom:1.5rem">
+        <label>Password</label>
+        <input type="password" id="admin-pass" placeholder="••••••••" value="password">
+        <div class="field-hint">Demo: any password works</div>
+      </div>
+      <button class="btn btn-primary btn-block" onclick="adminLogin()">Sign In</button>
+    </div>
+  </div>
+</div>
+
+<!-- ====== ADMIN DASHBOARD ====== -->
+<div id="view-admin-dashboard" class="view">
+  <div class="section-header">
+    <div>
+      <div class="section-title">Admin Dashboard</div>
+      <div class="section-sub">Sulap Artisan Vendor Registration</div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-secondary btn-sm" onclick="exportCSV()">⬇ Export Vendors</button>
+      <button class="btn btn-secondary btn-sm" onclick="adminTab(document.querySelectorAll('#view-admin-dashboard .pill-tab')[6],&#39;at-settings&#39;);loadBrandingSettingsForm();">⚙ Site Settings</button>
+      <button class="btn btn-primary btn-sm" onclick="openModal(&#39;modal-new-event&#39;)">+ New Event</button>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-label">Total Applications</div><div class="stat-value" id="stat-total">47</div><div class="stat-delta">↑ 8 this week</div></div>
+    <div class="stat-card"><div class="stat-label">Pending Review</div><div class="stat-value" style="color:var(--amber)" id="stat-pending">12</div></div>
+    <div class="stat-card"><div class="stat-label">Approved Vendors</div><div class="stat-value" style="color:var(--green)" id="stat-approved">31</div></div>
+    <div class="stat-card"><div class="stat-label">Active Events</div><div class="stat-value" style="color:var(--accent)" id="stat-events">3</div></div>
+  </div>
+
+  <div class="pill-tabs">
+    <button class="pill-tab active" onclick="adminTab(this,&#39;at-vendors&#39;)">Vendor Applications</button>
+    <button class="pill-tab" onclick="adminTab(this,&#39;at-events&#39;)">Events</button>
+    <button class="pill-tab" onclick="adminTab(this,&#39;at-eventapps&#39;)">Event Applications</button>
+    <button class="pill-tab" onclick="adminTab(this,&#39;at-payments&#39;)">Payments &amp; Invoices</button>
+    <button class="pill-tab" onclick="adminTab(this,&#39;at-parking&#39;)">Parking</button>
+    <button class="pill-tab" onclick="adminTab(this,&#39;at-vendorpass&#39;)">Vendor Pass</button>
+    <button class="pill-tab" onclick="adminTab(this,&#39;at-settings&#39;);loadBrandingSettingsForm();">Site Settings</button>
+  </div>
+
+  <!-- VENDORS -->
+  <div id="at-vendors" style="display: block;">
+    <div class="search-bar">
+      <input type="text" placeholder="Search by name, email, category..." id="vendor-search" oninput="renderAdminVendors()">
+      <select onchange="renderAdminVendors()" id="vendor-filter-status">
+        <option value="">All Status</option><option value="pending">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option>
+      </select>
+    </div>
+    <div class="table-container">
+      <table>
+        <thead><tr><th>Vendor</th><th>Category</th><th>Location</th><th>Car Plate</th><th>Submitted</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody id="admin-vendors-tbody">
+    <tr>
+      <td><div style="display:flex;align-items:center;gap:10px">
+        <div class="v-avatar">M</div>
+        <div><div style="font-weight:500;font-size:13px">Meja Kayu Co.</div><div style="font-size:12px;color:var(--text2)">hafiz@mejakayu.com</div></div>
+      </div></td>
+      <td><span class="tag nonfnb">Handmade Crafts &amp; Art</span></td>
+      <td style="font-size:13px;color:var(--text2)">Selangor</td>
+      <td style="font-size:13px;font-weight:500">WKL 3421</td>
+      <td style="font-size:12px;color:var(--text2)">5 May 2025</td>
+      <td><span class="badge badge-approved">Approved</span></td>
+      <td><div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" onclick="viewVendorDetail(&#39;SUL-2025-0035&#39;)">View</button>
+        
+      </div></td>
+    </tr>
+    <tr>
+      <td><div style="display:flex;align-items:center;gap:10px">
+        <div class="v-avatar">B</div>
+        <div><div style="font-weight:500;font-size:13px">Batik Bayu</div><div style="font-size:12px;color:var(--text2)">redzuan@batikbayu.com</div></div>
+      </div></td>
+      <td><span class="tag nonfnb">Fashion &amp; Apparel</span></td>
+      <td style="font-size:13px;color:var(--text2)">Penang</td>
+      <td style="font-size:13px;font-weight:500">PEA 7711</td>
+      <td style="font-size:12px;color:var(--text2)">8 May 2025</td>
+      <td><span class="badge badge-pending">Pending</span></td>
+      <td><div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" onclick="viewVendorDetail(&#39;SUL-2025-0036&#39;)">View</button>
+        <button class="btn btn-success btn-sm" onclick="quickStatus(&#39;SUL-2025-0036&#39;,&#39;approved&#39;)">✓</button><button class="btn btn-danger btn-sm" onclick="quickStatus(&#39;SUL-2025-0036&#39;,&#39;rejected&#39;)">✗</button>
+      </div></td>
+    </tr>
+    <tr>
+      <td><div style="display:flex;align-items:center;gap:10px">
+        <div class="v-avatar">K</div>
+        <div><div style="font-weight:500;font-size:13px">Kayu Hidup</div><div style="font-size:12px;color:var(--text2)">snora@kayuhidup.com</div></div>
+      </div></td>
+      <td><span class="tag nonfnb">Handmade Crafts &amp; Art</span></td>
+      <td style="font-size:13px;color:var(--text2)">Selangor</td>
+      <td style="font-size:13px;font-weight:500">BJA 0023</td>
+      <td style="font-size:12px;color:var(--text2)">10 May 2025</td>
+      <td><span class="badge badge-pending">Pending</span></td>
+      <td><div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" onclick="viewVendorDetail(&#39;SUL-2025-0037&#39;)">View</button>
+        <button class="btn btn-success btn-sm" onclick="quickStatus(&#39;SUL-2025-0037&#39;,&#39;approved&#39;)">✓</button><button class="btn btn-danger btn-sm" onclick="quickStatus(&#39;SUL-2025-0037&#39;,&#39;rejected&#39;)">✗</button>
+      </div></td>
+    </tr>
+    <tr>
+      <td><div style="display:flex;align-items:center;gap:10px">
+        <div class="v-avatar">T</div>
+        <div><div style="font-weight:500;font-size:13px">Tanah Liat Studio</div><div style="font-size:12px;color:var(--text2)">aishah@tanahliat.com</div></div>
+      </div></td>
+      <td><span class="tag nonfnb">Handmade Crafts &amp; Art</span></td>
+      <td style="font-size:13px;color:var(--text2)">Kuala Lumpur</td>
+      <td style="font-size:13px;font-weight:500">WXY 5599</td>
+      <td style="font-size:12px;color:var(--text2)">12 May 2025</td>
+      <td><span class="badge badge-approved">Approved</span></td>
+      <td><div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" onclick="viewVendorDetail(&#39;SUL-2025-0038&#39;)">View</button>
+        
+      </div></td>
+    </tr>
+    <tr>
+      <td><div style="display:flex;align-items:center;gap:10px">
+        <div class="v-avatar">L</div>
+        <div><div style="font-weight:500;font-size:13px">Lilin Halus</div><div style="font-size:12px;color:var(--text2)">farhan@lilinhalus.com</div></div>
+      </div></td>
+      <td><span class="tag nonfnb">Handmade Crafts &amp; Art</span></td>
+      <td style="font-size:13px;color:var(--text2)">Kuala Lumpur</td>
+      <td style="font-size:13px;font-weight:500">WBC 4412</td>
+      <td style="font-size:12px;color:var(--text2)">13 May 2025</td>
+      <td><span class="badge badge-approved">Approved</span></td>
+      <td><div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" onclick="viewVendorDetail(&#39;SUL-2025-0039&#39;)">View</button>
+        
+      </div></td>
+    </tr>
+    <tr>
+      <td><div style="display:flex;align-items:center;gap:10px">
+        <div class="v-avatar">P</div>
+        <div><div style="font-weight:500;font-size:13px">Perak Sejati</div><div style="font-size:12px;color:var(--text2)">zara@peraksejati.com</div></div>
+      </div></td>
+      <td><span class="tag nonfnb">Beauty, Wellness &amp; Personal Care</span></td>
+      <td style="font-size:13px;color:var(--text2)">Kuala Lumpur</td>
+      <td style="font-size:13px;font-weight:500">WDE 1188</td>
+      <td style="font-size:12px;color:var(--text2)">15 May 2025</td>
+      <td><span class="badge badge-rejected">Rejected</span></td>
+      <td><div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" onclick="viewVendorDetail(&#39;SUL-2025-0040&#39;)">View</button>
+        
+      </div></td>
+    </tr>
+    <tr>
+      <td><div style="display:flex;align-items:center;gap:10px">
+        <div class="v-avatar">D</div>
+        <div><div style="font-weight:500;font-size:13px">Dapur Warisan</div><div style="font-size:12px;color:var(--text2)">nabilah@dapur.com</div></div>
+      </div></td>
+      <td><span class="tag fnb">Food &amp; Beverage (F&amp;B)</span></td>
+      <td style="font-size:13px;color:var(--text2)">Johor</td>
+      <td style="font-size:13px;font-weight:500">JDA 9988</td>
+      <td style="font-size:12px;color:var(--text2)">16 May 2025</td>
+      <td><span class="badge badge-pending">Pending</span></td>
+      <td><div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" onclick="viewVendorDetail(&#39;SUL-2025-0041&#39;)">View</button>
+        <button class="btn btn-success btn-sm" onclick="quickStatus(&#39;SUL-2025-0041&#39;,&#39;approved&#39;)">✓</button><button class="btn btn-danger btn-sm" onclick="quickStatus(&#39;SUL-2025-0041&#39;,&#39;rejected&#39;)">✗</button>
+      </div></td>
+    </tr>
+    <tr>
+      <td><div style="display:flex;align-items:center;gap:10px">
+        <div class="v-avatar">A</div>
+        <div><div style="font-weight:500;font-size:13px">Akar Bumi</div><div style="font-size:12px;color:var(--text2)">rizal@akarbumi.com</div></div>
+      </div></td>
+      <td><span class="tag nonfnb">Beauty, Wellness &amp; Personal Care</span></td>
+      <td style="font-size:13px;color:var(--text2)">Kelantan</td>
+      <td style="font-size:13px;font-weight:500">KB 3344</td>
+      <td style="font-size:12px;color:var(--text2)">17 May 2025</td>
+      <td><span class="badge badge-pending">Pending</span></td>
+      <td><div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" onclick="viewVendorDetail(&#39;SUL-2025-0042&#39;)">View</button>
+        <button class="btn btn-success btn-sm" onclick="quickStatus(&#39;SUL-2025-0042&#39;,&#39;approved&#39;)">✓</button><button class="btn btn-danger btn-sm" onclick="quickStatus(&#39;SUL-2025-0042&#39;,&#39;rejected&#39;)">✗</button>
+      </div></td>
+    </tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- EVENTS -->
+  <div id="at-events" style="display: none;">
+    <div id="admin-events-list"><div class="event-card">
+      <div class="event-pic-placeholder">📸</div>
+      <div style="background:var(--accent);color:white;border-radius:var(--radius);padding:8px 14px;text-align:center;min-width:54px;flex-shrink:0">
+        <div class="date-month">Jun</div><div class="date-day">14</div>
+        <div style="font-size:10px;opacity:.8;margin-top:2px">2d</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">Sulap Makers Market — TTDI</div>
+        <div class="event-meta"><span>📍 TTDI Park, KL</span><span>🗓 14–15 Jun 2025 (2 days)</span><span>🕒 9am – 6pm</span></div>
+        <div class="event-fee-box">
+          <span class="fee-pill fnb">F&amp;B: RM 180/day</span>
+          <span class="fee-pill nonfnb">Non F&amp;B: RM 250/day</span>
+        </div>
+        <div style="font-size:12px;color:var(--text2);margin-top:6px">4 applied · 2 selected · 0 confirmed</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;flex-shrink:0">
+        <span class="badge badge-active">active</span>
+        <button class="btn btn-ghost btn-sm" onclick="switchToEventApps(&#39;E001&#39;)">Manage →</button>
+      </div>
+    </div><div class="event-card">
+      <div class="event-pic-placeholder">📸</div>
+      <div style="background:var(--accent);color:white;border-radius:var(--radius);padding:8px 14px;text-align:center;min-width:54px;flex-shrink:0">
+        <div class="date-month">Jul</div><div class="date-day">5</div>
+        <div style="font-size:10px;opacity:.8;margin-top:2px">2d</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">Artisan Weekend — Publika</div>
+        <div class="event-meta"><span>📍 Publika Mall</span><span>🗓 5–6 Jul 2025 (2 days)</span><span>🕒 10am – 9pm</span></div>
+        <div class="event-fee-box">
+          <span class="fee-pill fnb">F&amp;B: RM 280/day</span>
+          <span class="fee-pill nonfnb">Non F&amp;B: RM 380/day</span>
+        </div>
+        <div style="font-size:12px;color:var(--text2);margin-top:6px">3 applied · 3 selected · 2 confirmed</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;flex-shrink:0">
+        <span class="badge badge-active">active</span>
+        <button class="btn btn-ghost btn-sm" onclick="switchToEventApps(&#39;E002&#39;)">Manage →</button>
+      </div>
+    </div><div class="event-card">
+      <div class="event-pic-placeholder">📸</div>
+      <div style="background:var(--accent);color:white;border-radius:var(--radius);padding:8px 14px;text-align:center;min-width:54px;flex-shrink:0">
+        <div class="date-month">Aug</div><div class="date-day">23</div>
+        <div style="font-size:10px;opacity:.8;margin-top:2px">3d</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">Merdeka Craft Fair</div>
+        <div class="event-meta"><span>📍 Dataran Merdeka, KL</span><span>🗓 23–25 Aug 2025 (3 days)</span><span>🕒 8am – 8pm</span></div>
+        <div class="event-fee-box">
+          <span class="fee-pill fnb">F&amp;B: RM 150/day</span>
+          <span class="fee-pill nonfnb">Non F&amp;B: RM 200/day</span>
+        </div>
+        <div style="font-size:12px;color:var(--text2);margin-top:6px">0 applied · 0 selected · 0 confirmed</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;flex-shrink:0">
+        <span class="badge badge-active">active</span>
+        <button class="btn btn-ghost btn-sm" onclick="switchToEventApps(&#39;E003&#39;)">Manage →</button>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- EVENT APPLICATIONS -->
+  <div id="at-eventapps" style="display: none;">
+    <div style="margin-bottom:1rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <label style="font-size:13px;font-weight:500;color:var(--text2)">Event:</label>
+      <select id="ea-event-select" onchange="renderEventApps()" style="padding:8px 12px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px"><option value="E001">Sulap Makers Market — TTDI</option><option value="E002">Artisan Weekend — Publika</option><option value="E003">Merdeka Craft Fair</option></select>
+      <button class="btn btn-secondary btn-sm" onclick="exportEventApplications()">⬇ Export Event Applications</button>
+    </div>
+    <div class="table-container">
+      <table>
+        <thead><tr><th>Vendor</th><th>Category</th><th>Applied</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody id="admin-ea-tbody"><tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--text3)">No applications for this event</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PAYMENTS -->
+  <div id="at-payments" style="display: none;">
+    <div style="margin-bottom:1rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <label style="font-size:13px;font-weight:500;color:var(--text2)">Filter by Event:</label>
+      <select id="pay-event-filter" onchange="renderAdminPayments()" style="padding:8px 12px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px"><option value="">All Events</option><option value="E001">Sulap Makers Market — TTDI</option><option value="E002">Artisan Weekend — Publika</option><option value="E003">Merdeka Craft Fair</option></select>
+      <button class="btn btn-secondary btn-sm" onclick="exportPayments()">⬇ Export Payments & Invoices</button>
+    </div>
+    <div class="table-container">
+      <table>
+        <thead><tr><th>Vendor</th><th>Event</th><th>Join Fee</th><th>Receipt</th><th>Invoice</th><th>Status</th></tr></thead>
+        <tbody id="admin-payments-tbody">
+    <tr>
+      <td><div style="font-weight:500;font-size:13px">Tanah Liat Studio</div></td>
+      <td style="font-size:12px;color:var(--text2)">Artisan Weekend — Publika</td>
+      <td style="font-weight:500">RM 380</td>
+      <td><button class="btn btn-ghost btn-sm" onclick="downloadFile(&#39;receipt_tanahliat.pdf&#39;)">📄 View</button></td>
+      <td><button class="btn btn-ghost btn-sm" onclick="downloadFile(&#39;INV-2025-007.pdf&#39;)">📄 View</button></td>
+      <td><span class="badge badge-confirmed">confirmed</span></td>
+    </tr>
+    <tr>
+      <td><div style="font-weight:500;font-size:13px">Lilin Halus</div></td>
+      <td style="font-size:12px;color:var(--text2)">Sulap Makers Market — TTDI</td>
+      <td style="font-weight:500">RM 250</td>
+      <td><span style="font-size:12px;color:var(--text3)">Not uploaded</span></td>
+      <td><button class="btn btn-indigo btn-sm" onclick="openInvoiceUpload(&#39;Lilin Halus&#39;,&#39;E001&#39;)">Upload</button></td>
+      <td><span class="badge badge-payment-pending">payment pending</span></td>
+    </tr>
+    <tr>
+      <td><div style="font-weight:500;font-size:13px">Batik Bayu</div></td>
+      <td style="font-size:12px;color:var(--text2)">Artisan Weekend — Publika</td>
+      <td style="font-weight:500">RM 380</td>
+      <td><button class="btn btn-ghost btn-sm" onclick="downloadFile(&#39;receipt_batikbayu.pdf&#39;)">📄 View</button></td>
+      <td><button class="btn btn-ghost btn-sm" onclick="downloadFile(&#39;INV-2025-008.pdf&#39;)">📄 View</button></td>
+      <td><span class="badge badge-confirmed">confirmed</span></td>
+    </tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PARKING -->
+  <div id="at-parking" style="display: none;">
+    <div style="margin-bottom:1rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <label style="font-size:13px;font-weight:500;color:var(--text2)">Event:</label>
+      <select id="parking-event-select" onchange="renderParking()" style="padding:8px 12px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px"><option value="E001">Sulap Makers Market — TTDI</option><option value="E002">Artisan Weekend — Publika</option><option value="E003">Merdeka Craft Fair</option></select>
+      <button class="btn btn-secondary btn-sm" onclick="exportParking()">⬇ Export Parking</button>
+    </div>
+    <div class="alert alert-info"><span class="alert-icon">🅿️</span><div>Enter the daily parking serial number for each confirmed vendor. Each day has its own serial number for complimentary vendor parking (1 entry per day).</div></div>
+    <div id="parking-table-wrap">
+    <div class="table-container"><table>
+      <thead><tr><th>Vendor</th><th class="parking-day-col">Day 1 (14 Jun) — Serial No.</th><th class="parking-day-col">Day 2 (15 Jun) — Serial No.</th></tr></thead>
+      <tbody><tr><td><div style="display:flex;align-items:center;gap:8px"><div class="v-avatar">T</div><div><div style="font-weight:500;font-size:13px">Tanah Liat Studio</div><div style="font-size:12px;color:var(--text2)">🚗 WXY 5599</div></div></div></td><td><input class="parking-input " type="text" placeholder="Serial no." value="" onchange="saveParkingSerial(&#39;E001&#39;,&#39;SUL-2025-0038&#39;,0,this)"></td><td><input class="parking-input " type="text" placeholder="Serial no." value="" onchange="saveParkingSerial(&#39;E001&#39;,&#39;SUL-2025-0038&#39;,1,this)"></td></tr><tr><td><div style="display:flex;align-items:center;gap:8px"><div class="v-avatar">L</div><div><div style="font-weight:500;font-size:13px">Lilin Halus</div><div style="font-size:12px;color:var(--text2)">🚗 WBC 4412</div></div></div></td><td><input class="parking-input " type="text" placeholder="Serial no." value="" onchange="saveParkingSerial(&#39;E001&#39;,&#39;SUL-2025-0039&#39;,0,this)"></td><td><input class="parking-input " type="text" placeholder="Serial no." value="" onchange="saveParkingSerial(&#39;E001&#39;,&#39;SUL-2025-0039&#39;,1,this)"></td></tr></tbody>
+    </table></div></div>
+  </div>
+
+  <!-- VENDOR PASS -->
+  <div id="at-vendorpass" style="display: none;">
+    <div style="margin-bottom:1rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <label style="font-size:13px;font-weight:500;color:var(--text2)">Event:</label>
+      <select id="vpass-event-select" onchange="renderVendorPass()" style="padding:8px 12px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px"><option value="E001">Sulap Makers Market — TTDI</option><option value="E002">Artisan Weekend — Publika</option><option value="E003">Merdeka Craft Fair</option></select>
+      <button class="btn btn-secondary btn-sm" onclick="exportVendorPass()">⬇ Export Vendor Pass</button>
+    </div>
+    <div class="alert alert-info"><span class="alert-icon">🏷️</span><div>Record vendor tag/pass collection and returns per event. Click any row to update details.</div></div>
+    <div class="table-container">
+      <table>
+        <thead><tr><th>Vendor</th><th>Car Plate</th><th>Collected By</th><th>Phone</th><th>Tags Issued</th><th>Collected On</th><th>Tags Returned</th><th>Return Date</th><th>Status</th><th></th></tr></thead>
+        <tbody id="vpass-tbody"><tr>
+      <td><div style="display:flex;align-items:center;gap:8px"><div class="v-avatar">T</div><div style="font-weight:500;font-size:13px">Tanah Liat Studio</div></div></td>
+      <td style="font-size:12px;font-weight:500">WXY 5599</td>
+      <td style="font-size:13px"><span style="color:var(--text3)">—</span></td>
+      <td style="font-size:13px"><span style="color:var(--text3)">—</span></td>
+      <td style="font-size:13px;text-align:center"><span style="color:var(--text3)">—</span></td>
+      <td style="font-size:12px;color:var(--text2)"><span style="color:var(--text3)">—</span></td>
+      <td style="font-size:13px;text-align:center"><span style="color:var(--text3)">—</span></td>
+      <td style="font-size:12px;color:var(--text2)"><span style="color:var(--text3)">—</span></td>
+      <td><span class="badge badge-pending">Pending</span></td>
+      <td><button class="btn btn-ghost btn-sm" onclick="openVendorPassModal(&#39;E001&#39;,&#39;SUL-2025-0038&#39;,&#39;Tanah Liat Studio&#39;)">Edit</button></td>
+    </tr><tr>
+      <td><div style="display:flex;align-items:center;gap:8px"><div class="v-avatar">L</div><div style="font-weight:500;font-size:13px">Lilin Halus</div></div></td>
+      <td style="font-size:12px;font-weight:500">WBC 4412</td>
+      <td style="font-size:13px"><span style="color:var(--text3)">—</span></td>
+      <td style="font-size:13px"><span style="color:var(--text3)">—</span></td>
+      <td style="font-size:13px;text-align:center"><span style="color:var(--text3)">—</span></td>
+      <td style="font-size:12px;color:var(--text2)"><span style="color:var(--text3)">—</span></td>
+      <td style="font-size:13px;text-align:center"><span style="color:var(--text3)">—</span></td>
+      <td style="font-size:12px;color:var(--text2)"><span style="color:var(--text3)">—</span></td>
+      <td><span class="badge badge-pending">Pending</span></td>
+      <td><button class="btn btn-ghost btn-sm" onclick="openVendorPassModal(&#39;E001&#39;,&#39;SUL-2025-0039&#39;,&#39;Lilin Halus&#39;)">Edit</button></td>
+    </tr></tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- SETTINGS -->
+  <div id="at-settings" style="display: none;">
+    <div class="card">
+      <div class="card-title">Branding & Home Page</div>
+      <div class="card-sub">Update your logo and public home page text from the admin side.</div>
+      <div style="display:flex;gap:1rem;align-items:center;margin-bottom:1rem;flex-wrap:wrap">
+        <div class="logo-preview" id="settings-logo-preview">S</div>
+        <div class="field" style="flex:1;min-width:220px">
+          <label>Upload Logo</label>
+          <input type="file" id="settings-logo-file" accept="image/*" onchange="handleSiteLogo(this)">
+          <div class="field-hint">Square logo works best. PNG/JPG/WebP supported.</div>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="field field-full">
+          <label>Home Page Badge</label>
+          <input type="text" id="settings-hero-badge" placeholder="🌿 Now accepting 2025 applications">
+        </div>
+        <div class="field field-full">
+          <label>Home Page Title</label>
+          <textarea id="settings-hero-title" placeholder="Bringing artisan makers
+to <span>Sulap Markets</span>"></textarea>
+          <div class="field-hint">Use a new line for line break. You may wrap highlighted words with &lt;span&gt;...&lt;/span&gt;.</div>
+        </div>
+        <div class="field field-full">
+          <label>Home Page Subtitle</label>
+          <textarea id="settings-hero-subtitle" placeholder="Apply to become a Sulap vendor..."></textarea>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-secondary" onclick="resetBrandingSettings()">Reset Demo Text</button>
+        <button class="btn btn-primary" onclick="saveBrandingSettings()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== MODALS ====== -->
+
+<!-- Vendor Detail -->
+<div class="modal-overlay" id="modal-vendor-detail">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title" id="mvd-title">Vendor Details</div>
+      <button class="modal-close" onclick="closeModal(&#39;modal-vendor-detail&#39;)">×</button>
+    </div>
+    <div id="mvd-body"></div>
+    <div class="actions">
+      <button class="btn btn-success" onclick="approveVendor()">✓ Approve</button>
+      <button class="btn btn-danger" onclick="rejectVendor()">✗ Reject</button>
+      <button class="btn btn-secondary" onclick="closeModal(&#39;modal-vendor-detail&#39;)">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- New Event -->
+<div class="modal-overlay" id="modal-new-event">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">Create New Event</div>
+      <button class="modal-close" onclick="closeModal(&#39;modal-new-event&#39;)">×</button>
+    </div>
+    <div class="form-grid">
+      <div class="field field-full">
+        <label>Event Name <span class="required-star">*</span></label>
+        <input type="text" id="ne-name" placeholder="e.g. Sulap Night Market — Bangsar">
+      </div>
+      <div class="field">
+        <label>Start Date <span class="required-star">*</span></label>
+        <input type="date" id="ne-date-start" onchange="calcEventDays()">
+      </div>
+      <div class="field">
+        <label>End Date <span class="required-star">*</span></label>
+        <input type="date" id="ne-date-end" onchange="calcEventDays()">
+      </div>
+      <div class="field field-full" id="ne-days-display" style="display:none">
+        <div class="alert alert-success" style="margin:0"><span class="alert-icon">📅</span><div id="ne-days-text"></div></div>
+      </div>
+      <div class="field">
+        <label>Daily Time</label>
+        <input type="text" id="ne-time" placeholder="e.g. 4pm – 10pm">
+      </div>
+      <div class="field field-full">
+        <label>Venue <span class="required-star">*</span></label>
+        <input type="text" id="ne-venue" placeholder="Venue name, address">
+      </div>
+      <div class="field">
+        <label>Join Fee — F&amp;B (RM/day)</label>
+        <input type="number" id="ne-fee-fnb" placeholder="e.g. 200" min="0">
+      </div>
+      <div class="field">
+        <label>Join Fee — Non F&amp;B (RM/day)</label>
+        <input type="number" id="ne-fee-nonfnb" placeholder="e.g. 250" min="0">
+      </div>
+      <div class="field field-full">
+        <label>Event Profile Picture</label>
+        <div class="upload-zone" id="ne-pic-zone">
+          <input type="file" accept="image/*" onchange="handleEventPic(this)">
+          <div class="upload-zone-icon">🖼️</div>
+          <div class="upload-zone-label">Click to upload event photo</div>
+          <div class="upload-zone-hint">JPG or PNG — displays in event listings</div>
+        </div>
+      </div>
+      <div class="field field-full">
+        <label>Description for Vendors</label>
+        <textarea id="ne-desc" placeholder="What vendors need to know about this event..."></textarea>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-secondary" onclick="closeModal(&#39;modal-new-event&#39;)">Cancel</button>
+      <button class="btn btn-primary" onclick="createEvent()">Create Event</button>
+    </div>
+  </div>
+</div>
+
+<!-- Upload Invoice -->
+<div class="modal-overlay" id="modal-upload-invoice">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">Upload Invoice</div>
+      <button class="modal-close" onclick="closeModal(&#39;modal-upload-invoice&#39;)">×</button>
+    </div>
+    <p style="font-size:14px;color:var(--text2);margin-bottom:1.25rem" id="uinv-label">Invoice for vendor</p>
+    <div class="field">
+      <label>Invoice File <span class="required-star">*</span></label>
+      <div class="upload-zone" id="inv-upload-zone">
+        <input type="file" accept=".pdf,.docx,.xlsx" onchange="handleInvoiceFile(this)">
+        <div class="upload-zone-icon">📄</div>
+        <div class="upload-zone-label">Click or drag to upload invoice</div>
+        <div class="upload-zone-hint">PDF, Word, or Excel — max 20MB</div>
+      </div>
+      <div id="inv-upload-status"></div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-secondary" onclick="closeModal(&#39;modal-upload-invoice&#39;)">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmInvoiceUpload()">Upload &amp; Notify Vendor</button>
+    </div>
+  </div>
+</div>
+
+<!-- Apply Event Confirmation -->
+<div class="modal-overlay" id="modal-apply-event">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">Apply for Event</div>
+      <button class="modal-close" onclick="closeModal(&#39;modal-apply-event&#39;)">×</button>
+    </div>
+    <div id="mae-body"></div>
+    <div class="actions">
+      <button class="btn btn-secondary" onclick="closeModal(&#39;modal-apply-event&#39;)">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmEventApplication()">Confirm Application</button>
+    </div>
+  </div>
+</div>
+
+<!-- Vendor Pass Edit -->
+<div class="modal-overlay" id="modal-vendor-pass">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">Vendor Pass — <span id="vpm-vendor-name"></span></div>
+      <button class="modal-close" onclick="closeModal(&#39;modal-vendor-pass&#39;)">×</button>
+    </div>
+    <div class="form-grid">
+      <div class="field field-full">
+        <label style="font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px">COLLECTION DETAILS</label>
+      </div>
+      <div class="field">
+        <label>Collected By (Name) <span class="required-star">*</span></label>
+        <input type="text" id="vpm-collector" placeholder="Full name of collector">
+      </div>
+      <div class="field">
+        <label>Collector Phone</label>
+        <input type="tel" id="vpm-collector-phone" placeholder="+60 12-345 6789">
+      </div>
+      <div class="field">
+        <label>Tags Issued</label>
+        <input type="number" id="vpm-issued" placeholder="e.g. 3" min="1" max="20">
+      </div>
+      <div class="field">
+        <label>Collection Date</label>
+        <input type="date" id="vpm-collect-date">
+      </div>
+      <div class="field field-full">
+        <label style="font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:8px">RETURN DETAILS</label>
+      </div>
+      <div class="field">
+        <label>Tags Returned</label>
+        <input type="number" id="vpm-returned" placeholder="e.g. 3" min="0">
+      </div>
+      <div class="field">
+        <label>Return Date</label>
+        <input type="date" id="vpm-return-date">
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-secondary" onclick="closeModal(&#39;modal-vendor-pass&#39;)">Cancel</button>
+      <button class="btn btn-primary" onclick="saveVendorPass()">Save Record</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Signed out.</div>
+
+<script>
+'use strict';
+
+// ===== SUPABASE PRODUCTION SETUP =====
+const SUPABASE_READY = window.SULAP_SUPABASE_URL && !String(window.SULAP_SUPABASE_URL).includes('PASTE_') && window.SULAP_SUPABASE_ANON_KEY && !String(window.SULAP_SUPABASE_ANON_KEY).includes('PASTE_');
+const db = SUPABASE_READY ? window.supabase.createClient(window.SULAP_SUPABASE_URL, window.SULAP_SUPABASE_ANON_KEY) : null;
+
+async function dbLoadSiteSettings(){
+  if(!db) return false;
+  const {data,error}=await db.from('site_settings').select('*').eq('id',1).single();
+  if(error){console.warn('Site settings load failed:',error.message);return false;}
+  if(data){
+    S.settings={logoDataUrl:data.logo_url || null,heroBadge:data.hero_badge || S.settings.heroBadge,heroTitle:data.hero_title || S.settings.heroTitle,heroSubtitle:data.hero_subtitle || S.settings.heroSubtitle};
+    applyBrandingSettings(); return true;
+  }
+  return false;
+}
+async function dbSaveSiteSettings(){
+  if(!db) return false;
+  const st=S.settings||{};
+  const {error}=await db.from('site_settings').upsert({id:1,logo_url:st.logoDataUrl||null,hero_badge:st.heroBadge||'',hero_title:st.heroTitle||'',hero_subtitle:st.heroSubtitle||'',updated_at:new Date().toISOString()});
+  if(error){showToast('Database save failed: '+error.message,'error');return false;}
+  return true;
+}
+async function dbLoadCoreData(){
+  if(!db) return false;
+  try{
+    const [vendorsRes,eventsRes,appsRes,paymentsRes]=await Promise.all([
+      db.from('vendors').select('*').order('created_at',{ascending:true}),
+      db.from('events').select('*').order('date_start',{ascending:true}),
+      db.from('event_applications').select('*, vendors(name, category)').order('created_at',{ascending:true}),
+      db.from('payments').select('*, vendors(name), events(name)').order('created_at',{ascending:true})
+    ]);
+    if(vendorsRes.error||eventsRes.error||appsRes.error||paymentsRes.error) throw new Error((vendorsRes.error||eventsRes.error||appsRes.error||paymentsRes.error).message);
+    if(vendorsRes.data?.length){S.vendors=vendorsRes.data.map(v=>({id:v.ref_id,name:v.name,contact:v.contact,email:v.email,category:v.category,location:v.state,carplate:v.car_plate,date:new Date(v.created_at).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}),status:v.status,photos:v.photo_count||0,price:v.price_range||'',desc:v.description||'',power:v.power_needed||'',instagram:v.instagram||'',facebook:v.facebook||'',tiktok:v.tiktok||''}));}
+    if(eventsRes.data?.length){const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];S.events=eventsRes.data.map(ev=>{const d=new Date(ev.date_start);return {id:ev.id,name:ev.name,dateStart:ev.date_start,dateEnd:ev.date_end,days:getEventDays(ev.date_start,ev.date_end),month:mo[d.getMonth()],day:String(d.getDate()),time:ev.time_text||'TBC',venue:ev.venue,feeFnb:ev.fee_fnb||0,feeNonfnb:ev.fee_nonfnb||0,status:ev.status||'active',desc:ev.description||'',pic:ev.image_url||null,parkingData:{},passData:{}}});}
+    if(appsRes.data){S.eventApplications={};appsRes.data.forEach(a=>{const ev=a.event_id;if(!S.eventApplications[ev])S.eventApplications[ev]=[];S.eventApplications[ev].push({vendorId:a.vendor_ref_id,vendor:a.vendors?.name||a.vendor_ref_id,category:a.vendors?.category||'',applied:new Date(a.created_at).toLocaleDateString('en-GB',{day:'numeric',month:'short'}),status:a.status});});}
+    if(paymentsRes.data){S.payments=paymentsRes.data.map(p=>({vendorId:p.vendor_ref_id,vendor:p.vendors?.name||p.vendor_ref_id,event:p.events?.name||p.event_id,eventId:p.event_id,fee:'RM '+(p.amount||''),receipt:p.receipt_url,receiptDate:p.receipt_date,invoice:p.invoice_url,invoiceDate:p.invoice_date,status:p.status}));}
+    populateEventSelects(); return true;
+  }catch(e){console.warn('Core data load failed:',e.message);return false;}
+}
+async function dbBoot(){if(!db){console.info('Demo mode: add Supabase URL/key in public/config.js for production.');return;}await dbLoadSiteSettings();await dbLoadCoreData();if(S.currentView==='admin-dashboard')renderAdminDashboard();if(S.currentView==='portal-dashboard')renderVendorDashboard();}
+
+
+// ===== STATE =====
+const S = {
+  currentView:'home', regStep:1,
+  photoSlots:Array(6).fill(null),
+  activePhotoSlot:0, regData:{},
+  selectedCategory:'',
+  vendorSession:null, adminSession:false,
+  pendingEventId:null, pendingInvoiceVendorId:null,
+  currentVendorId:null, editingPassKey:null,
+  newEventPicDataUrl:null,
+  settings:{
+    logoDataUrl:null,
+    heroBadge:'🌿 Now accepting 2025 applications',
+    heroTitle:'Bringing artisan makers\nto <span>Sulap Markets</span>',
+    heroSubtitle:'Apply to become a Sulap vendor, showcase your craft at curated artisan markets, and manage everything from one place.'
+  },
+
+  vendors:[
+    {id:'SUL-2025-0035',name:'Meja Kayu Co.',contact:'Hafiz Osman',email:'hafiz@mejakayu.com',category:'Handmade Crafts & Art',location:'Selangor',carplate:'WKL 3421',date:'5 May 2025',status:'approved',photos:3,price:'RM 150–500',desc:'Handcrafted wooden furniture and decor using reclaimed teak.',power:'',instagram:'@mejakayu',facebook:'mejakayu',tiktok:''},
+    {id:'SUL-2025-0036',name:'Batik Bayu',contact:'Redzuan Ismail',email:'redzuan@batikbayu.com',category:'Fashion & Apparel',location:'Penang',carplate:'PEA 7711',date:'8 May 2025',status:'pending',photos:4,price:'RM 50–150',desc:'Contemporary batik wearables with traditional motifs.',power:'',instagram:'@batikbayu',facebook:'',tiktok:'@batikbayu'},
+    {id:'SUL-2025-0037',name:'Kayu Hidup',contact:'Siti Nora',email:'snora@kayuhidup.com',category:'Handmade Crafts & Art',location:'Selangor',carplate:'BJA 0023',date:'10 May 2025',status:'pending',photos:2,price:'RM 150–500',desc:'Live-edge wood slabs and bespoke furniture pieces.',power:'Sander 220V',instagram:'',facebook:'kayuhidup',tiktok:''},
+    {id:'SUL-2025-0038',name:'Tanah Liat Studio',contact:'Aishah Ramli',email:'aishah@tanahliat.com',category:'Handmade Crafts & Art',location:'Kuala Lumpur',carplate:'WXY 5599',date:'12 May 2025',status:'approved',photos:4,price:'RM 50–150',desc:'Wheel-thrown ceramics — mugs, bowls, vases.',power:'',instagram:'@tanahliatstudio',facebook:'tanahliatstudio',tiktok:''},
+    {id:'SUL-2025-0039',name:'Lilin Halus',contact:'Farhan Abdul',email:'farhan@lilinhalus.com',category:'Handmade Crafts & Art',location:'Kuala Lumpur',carplate:'WBC 4412',date:'13 May 2025',status:'approved',photos:3,price:'Under RM 50',desc:'Hand-poured soy candles with local botanical scents.',power:'Heat gun 220V',instagram:'@lilinhalus',facebook:'',tiktok:'@lilinhalus'},
+    {id:'SUL-2025-0040',name:'Perak Sejati',contact:'Zara Hamid',email:'zara@peraksejati.com',category:'Beauty, Wellness & Personal Care',location:'Kuala Lumpur',carplate:'WDE 1188',date:'15 May 2025',status:'rejected',photos:5,price:'RM 150–500',desc:'Sterling silver jewelry inspired by Malaysian flora.',power:'',instagram:'@peraksejati',facebook:'peraksejati',tiktok:''},
+    {id:'SUL-2025-0041',name:'Dapur Warisan',contact:'Nabilah Yusof',email:'nabilah@dapur.com',category:'Food & Beverage (F&B)',location:'Johor',carplate:'JDA 9988',date:'16 May 2025',status:'pending',photos:3,price:'Under RM 50',desc:'Traditional Johorean kuih and preserved foods.',power:'Rice cooker 220V, Chafing dish 220V',instagram:'',facebook:'dapurwarisan',tiktok:'@dapurwarisan'},
+    {id:'SUL-2025-0042',name:'Akar Bumi',contact:'Rizal Saad',email:'rizal@akarbumi.com',category:'Beauty, Wellness & Personal Care',location:'Kelantan',carplate:'KB 3344',date:'17 May 2025',status:'pending',photos:4,price:'RM 50–150',desc:'All-natural skincare using Kelantanese herbs.',power:'',instagram:'@akarbumi',facebook:'',tiktok:'@akarbumi'},
+  ],
+
+  events:[
+    {id:'E001',name:'Sulap Makers Market — TTDI',dateStart:'2025-06-14',dateEnd:'2025-06-15',days:2,month:'Jun',day:'14',time:'9am – 6pm',venue:'TTDI Park, KL',feeFnb:180,feeNonfnb:250,status:'active',desc:'Our flagship monthly market in the leafy TTDI park.',pic:null,
+     parkingData:{}, passData:{}},
+    {id:'E002',name:'Artisan Weekend — Publika',dateStart:'2025-07-05',dateEnd:'2025-07-06',days:2,month:'Jul',day:'5',time:'10am – 9pm',venue:'Publika Mall',feeFnb:280,feeNonfnb:380,status:'active',desc:'Curated indoor market at Publika.',pic:null,
+     parkingData:{}, passData:{}},
+    {id:'E003',name:'Merdeka Craft Fair',dateStart:'2025-08-23',dateEnd:'2025-08-25',days:3,month:'Aug',day:'23',time:'8am – 8pm',venue:'Dataran Merdeka, KL',feeFnb:150,feeNonfnb:200,status:'active',desc:'Special Merdeka edition celebrating Malaysian craft.',pic:null,
+     parkingData:{}, passData:{}},
+  ],
+
+  eventApplications:{
+    'E001':[
+      {vendorId:'SUL-2025-0038',vendor:'Tanah Liat Studio',category:'Handmade Crafts & Art',applied:'20 May',status:'selected'},
+      {vendorId:'SUL-2025-0035',vendor:'Meja Kayu Co.',category:'Handmade Crafts & Art',applied:'21 May',status:'applied'},
+      {vendorId:'SUL-2025-0039',vendor:'Lilin Halus',category:'Handmade Crafts & Art',applied:'22 May',status:'selected'},
+      {vendorId:'SUL-2025-0041',vendor:'Dapur Warisan',category:'Food & Beverage (F&B)',applied:'23 May',status:'applied'},
+    ],
+    'E002':[
+      {vendorId:'SUL-2025-0038',vendor:'Tanah Liat Studio',category:'Handmade Crafts & Art',applied:'18 May',status:'confirmed'},
+      {vendorId:'SUL-2025-0036',vendor:'Batik Bayu',category:'Fashion & Apparel',applied:'19 May',status:'confirmed'},
+      {vendorId:'SUL-2025-0039',vendor:'Lilin Halus',category:'Handmade Crafts & Art',applied:'20 May',status:'selected'},
+    ],
+    'E003':[],
+  },
+
+  payments:[
+    {vendorId:'SUL-2025-0038',vendor:'Tanah Liat Studio',event:'Artisan Weekend — Publika',eventId:'E002',fee:'RM 380',receipt:'receipt_tanahliat.pdf',receiptDate:'3 Jun 2025',invoice:'INV-2025-007.pdf',invoiceDate:'1 Jun 2025',status:'confirmed'},
+    {vendorId:'SUL-2025-0039',vendor:'Lilin Halus',event:'Sulap Makers Market — TTDI',eventId:'E001',fee:'RM 250',receipt:null,receiptDate:null,invoice:null,invoiceDate:null,status:'payment-pending'},
+    {vendorId:'SUL-2025-0036',vendor:'Batik Bayu',event:'Artisan Weekend — Publika',eventId:'E002',fee:'RM 380',receipt:'receipt_batikbayu.pdf',receiptDate:'4 Jun 2025',invoice:'INV-2025-008.pdf',invoiceDate:'1 Jun 2025',status:'confirmed'},
+  ],
+
+  myEventApps:{
+    'SUL-2025-0038':[
+      {eventId:'E001',eventName:'Sulap Makers Market — TTDI',dateStart:'2025-06-14',dateEnd:'2025-06-15',days:2,fee:250,feeFnb:180,status:'selected',receipt:null,invoice:null,isFnb:false},
+      {eventId:'E002',eventName:'Artisan Weekend — Publika',dateStart:'2025-07-05',dateEnd:'2025-07-06',days:2,fee:380,feeFnb:280,status:'confirmed',receipt:'receipt_tanahliat.pdf',invoice:'INV-2025-007.pdf',isFnb:false},
+    ]
+  }
+};
+
+// ===== VIEW =====
+function showView(v) {
+  document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(el=>el.classList.remove('active'));
+  document.getElementById('view-'+v).classList.add('active');
+  S.currentView=v;
+  const navMap={home:'nav-home',register:'nav-register','portal-login':'nav-portal','portal-dashboard':'nav-portal','admin-login':'nav-admin','admin-dashboard':'nav-admin'};
+  if(navMap[v]) document.getElementById(navMap[v]).classList.add('active');
+  if(v==='portal-dashboard') renderVendorDashboard();
+  if(v==='admin-dashboard') { renderAdminDashboard(); loadBrandingSettingsForm(); }
+  if(v==='register') initPhotoGrid();
+  window.scrollTo(0,0);
+}
+function goHome(){showView('home')}
+
+// ===== CATEGORY SELECTION =====
+function selectCat(el, val){
+  document.querySelectorAll('.cat-option').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  S.selectedCategory=val;
+  document.getElementById('cat-error').style.display='none';
+}
+
+// ===== PHOTO GRID =====
+function initPhotoGrid(){
+  const grid=document.getElementById('photo-grid');
+  grid.innerHTML=Array(6).fill(0).map((_,i)=>`
+    <div class="photo-thumb" id="pthumb-${i}" onclick="triggerPhoto(${i})">
+      <div class="add-icon">+</div>
+      <div style="font-size:11px;color:var(--text3)">Photo ${i+1}</div>
+      <button class="photo-remove" onclick="removePhoto(event,${i})">×</button>
+    </div>`).join('');
+}
+function triggerPhoto(slot){S.activePhotoSlot=slot;const inp=document.getElementById('hidden-photo-input');inp.value='';inp.click()}
+function handlePhotoFile(input){
+  const file=input.files[0]; if(!file) return;
+  if(file.size>5*1024*1024){showToast('File too large (max 5MB)','error');return}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const slot=S.activePhotoSlot;
+    S.photoSlots[slot]={name:file.name,dataUrl:e.target.result};
+    const thumb=document.getElementById('pthumb-'+slot);
+    thumb.classList.add('has-file');
+    thumb.innerHTML=`<img src="${e.target.result}" alt="photo" style="width:100%;height:100%;object-fit:cover"><button class="photo-remove" onclick="removePhoto(event,${slot})">×</button>`;
+  };
+  reader.readAsDataURL(file);
+}
+function removePhoto(e,slot){
+  e.stopPropagation();S.photoSlots[slot]=null;
+  const thumb=document.getElementById('pthumb-'+slot);
+  thumb.classList.remove('has-file');
+  thumb.innerHTML=`<div class="add-icon">+</div><div style="font-size:11px;color:var(--text3)">Photo ${slot+1}</div><button class="photo-remove" onclick="removePhoto(event,${slot})">×</button>`;
+  thumb.onclick=()=>triggerPhoto(slot);
+}
+
+// ===== STEPS =====
+function goStep(n){
+  document.getElementById('reg-step-'+S.regStep).style.display='none';
+  S.regStep=n;
+  document.getElementById('reg-step-'+n).style.display='block';
+  updateStepBar(n);window.scrollTo(0,0);
+}
+function updateStepBar(n){
+  [1,2,3].forEach(i=>{
+    const el=document.getElementById('stepind-'+i);
+    el.classList.remove('active','done');
+    if(i<n){el.classList.add('done');if(i<3)document.getElementById('conn-'+i).classList.add('done')}
+    else if(i===n) el.classList.add('active');
+  });
+}
+
+// ===== STEP 1 VALIDATE =====
+function validateStep1(){
+  const checks=[
+    {id:'f-bizname',inp:'inp-bizname',test:v=>v.trim().length>1},
+    {id:'f-contact',inp:'inp-contact',test:v=>v.trim().length>1},
+    {id:'f-email',inp:'inp-email',test:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)},
+    {id:'f-phone',inp:'inp-phone',test:v=>v.trim().length>5},
+    {id:'f-state',inp:'inp-state',test:v=>v!==''},
+    {id:'f-carplate',inp:'inp-carplate',test:v=>v.trim().length>2},
+    {id:'f-desc',inp:'inp-desc',test:v=>v.trim().length>10},
+  ];
+  let ok=true;
+  checks.forEach(c=>{
+    const val=document.getElementById(c.inp).value;
+    const fld=document.getElementById(c.id);
+    if(!c.test(val)){fld.classList.add('has-error');ok=false}else fld.classList.remove('has-error');
+  });
+  if(!S.selectedCategory){document.getElementById('cat-error').style.display='block';ok=false}
+  if(!ok){showToast('Please fill in all required fields','error');return}
+  S.regData={
+    bizname:document.getElementById('inp-bizname').value,
+    contact:document.getElementById('inp-contact').value,
+    email:document.getElementById('inp-email').value,
+    phone:document.getElementById('inp-phone').value,
+    state:document.getElementById('inp-state').value,
+    carplate:document.getElementById('inp-carplate').value.toUpperCase(),
+    category:S.selectedCategory,
+    desc:document.getElementById('inp-desc').value,
+    instagram:document.getElementById('inp-instagram').value,
+    facebook:document.getElementById('inp-facebook').value,
+    tiktok:document.getElementById('inp-tiktok').value,
+    website:document.getElementById('inp-website').value,
+  };
+  goStep(2);
+}
+
+// ===== STEP 2 VALIDATE =====
+function validateStep2(){
+  const photos=S.photoSlots.filter(Boolean);
+  const err=document.getElementById('photo-error');
+  if(photos.length===0){err.style.display='block';err.textContent='Please upload at least 1 product photo';showToast('Please upload at least 1 photo','error');return}
+  err.style.display='none';
+  S.regData.photos=photos.length;
+  S.regData.price=document.getElementById('inp-price').value;
+  S.regData.experience=document.getElementById('inp-experience').value;
+  S.regData.power=document.getElementById('inp-power').value;
+  S.regData.booth=document.getElementById('inp-booth').value;
+  buildReview();goStep(3);
+}
+
+function buildReview(){
+  const d=S.regData;
+  const social=[d.instagram&&`Instagram: ${d.instagram}`,d.facebook&&`Facebook: ${d.facebook}`,d.tiktok&&`TikTok: ${d.tiktok}`].filter(Boolean).join(' · ')||'—';
+  const rows=[
+    ['Business Name',d.bizname],['Contact Person',d.contact],
+    ['Email',d.email],['Phone',d.phone],
+    ['State',d.state],['Car Plate',d.carplate],
+    ['Category',d.category],['Price Range',d.price],
+    ['Photos Uploaded',d.photos+' photo(s)'],
+    ['Social Media',social],
+    ...(d.power?[['Power Needed',d.power]]:[]),
+    ...(d.website?[['Website',d.website]]:[]),
+  ];
+  document.getElementById('review-body').innerHTML=rows.map(([k,v])=>
+    `<div class="kv-row"><div class="kv-key">${k}</div><div class="kv-val">${v}</div></div>`
+  ).join('');
+}
+
+function submitApplication(){
+  const btn=document.getElementById('submit-btn');
+  btn.disabled=true;btn.textContent='Submitting...';
+  setTimeout(()=>{
+    const refId='SUL-2025-'+(Math.floor(Math.random()*9000)+1000);
+    document.getElementById('display-ref-id').textContent=refId;
+    document.getElementById('reg-step-3').style.display='none';
+    document.getElementById('reg-success').style.display='block';
+    btn.disabled=false;updateStepBar(4);
+  },1200);
+}
+
+// ===== VENDOR PORTAL =====
+function vendorLogin(){
+  const email=document.getElementById('portal-email').value.trim();
+  const ref=document.getElementById('portal-ref').value.trim();
+  if(!email||!ref){showToast('Please enter your email and reference ID','error');return}
+  const vendor=S.vendors.find(v=>v.email.toLowerCase()===email.toLowerCase()||v.id===ref);
+  if(!vendor){showToast('No vendor found with those details','error');return}
+  S.vendorSession=vendor;
+  document.getElementById('nav-user-display').style.display='flex';
+  document.getElementById('nav-avatar-initials').textContent=vendor.name.split(' ').map(w=>w[0]).join('').substring(0,2);
+  document.getElementById('nav-user-name').textContent=vendor.name;
+  showView('portal-dashboard');
+}
+
+function renderVendorDashboard(){
+  const v=S.vendorSession; if(!v){showView('portal-login');return}
+  document.getElementById('vd-vendor-name').textContent=v.name;
+  document.getElementById('vd-vendor-meta').textContent=`Ref: ${v.id} · ${v.category} · ${v.location}`;
+  document.getElementById('vd-status-badge').className='badge badge-'+v.status;
+  document.getElementById('vd-status-badge').textContent=v.status.charAt(0).toUpperCase()+v.status.slice(1);
+
+  const social=[v.instagram&&`📸 ${v.instagram}`,v.facebook&&`📘 ${v.facebook}`,v.tiktok&&`🎵 ${v.tiktok}`].filter(Boolean).join('  ') || '—';
+  const sumRows=[['Reference ID',v.id],['Contact',v.contact],['Email',v.email],['Category',v.category],['Location',v.location],['Car Plate',v.carplate||'—'],['Submitted',v.date],['Status',`<span class="badge badge-${v.status}">${v.status}</span>`],['Social',social],['Photos',v.photos+' submitted']];
+  document.getElementById('vt-application-summary').innerHTML=sumRows.map(([k,val])=>
+    `<div class="kv-row"><div class="kv-key">${k}</div><div class="kv-val">${val}</div></div>`).join('');
+
+  renderAvailableEvents();renderMyEvents();renderVendorDocs();
+}
+
+function isFnbVendor(v){return v&&v.category==='Food & Beverage (F&B)'}
+
+function renderAvailableEvents(){
+  const v=S.vendorSession;
+  const appliedIds=(S.myEventApps[v.id]||[]).map(a=>a.eventId);
+  const fnb=isFnbVendor(v);
+  const list=document.getElementById('vt-events-list');
+  list.innerHTML=S.events.map(ev=>{
+    const apps=(S.eventApplications[ev.id]||[]);
+    const applied=appliedIds.includes(ev.id);
+    const fee=fnb?ev.feeFnb:ev.feeNonfnb;
+    const total=fee*ev.days;
+    const dateRange=formatDateRange(ev.dateStart,ev.dateEnd);
+    return `<div class="event-card">
+      ${ev.pic?`<img src="${ev.pic}" class="event-pic-thumb">` : `<div class="event-pic-placeholder">📸</div>`}
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--accent);color:white;border-radius:var(--radius);padding:8px 12px;min-width:54px;flex-shrink:0;text-align:center">
+        <div class="date-month">${ev.month}</div>
+        <div class="date-day">${ev.day}</div>
+        <div style="font-size:10px;opacity:.8;margin-top:2px">${ev.days}d</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">${ev.name}</div>
+        <div class="event-meta">
+          <span>📍 ${ev.venue}</span>
+          <span>🗓 ${dateRange}</span>
+          <span>🕒 ${ev.time}</span>
+          <span>📊 ${apps.length} applied</span>
+        </div>
+        <div class="event-fee-box">
+          <span class="fee-pill ${fnb?'fnb':'nonfnb'}">Join Fee: RM ${fee}/day</span>
+          <span class="fee-pill">Total ${ev.days} days: RM ${total}</span>
+        </div>
+      </div>
+      <div style="flex-shrink:0;display:flex;align-items:center">
+        ${applied?'<span class="badge badge-applied">Applied</span>':
+          v.status!=='approved'?'<span style="font-size:12px;color:var(--text3)">Approval needed</span>':
+          `<button class="btn btn-primary btn-sm" onclick="openApplyEvent('${ev.id}')">Apply</button>`}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderMyEvents(){
+  const v=S.vendorSession;
+  const myApps=S.myEventApps[v.id]||[];
+  const container=document.getElementById('vt-myevents-list');
+  if(!myApps.length){container.innerHTML=`<div class="empty-state"><div class="empty-icon">🗓️</div><div class="empty-title">No events yet</div><div class="empty-sub">Apply for events in the Available Events tab</div></div>`;return}
+  container.innerHTML=myApps.map(app=>{
+    const ev=S.events.find(e=>e.id===app.eventId);
+    const dateRange=ev?formatDateRange(ev.dateStart,ev.dateEnd):'';
+    const total=app.fee*app.days;
+    return `<div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+        <div>
+          <div style="font-weight:500;font-size:15px">${app.eventName}</div>
+          <div style="font-size:12px;color:var(--text2)">📍 ${ev?ev.venue:''} &nbsp;·&nbsp; 🗓 ${dateRange} (${app.days} days)</div>
+          <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
+            <span class="fee-pill">RM ${app.fee}/day</span>
+            <span class="fee-pill">Total: RM ${total}</span>
+          </div>
+        </div>
+        <span class="badge badge-${app.status}">${app.status.replace('-',' ')}</span>
+      </div>
+      ${app.status==='selected'&&!app.receipt?`
+        <div class="alert alert-warning"><span class="alert-icon">⚠️</span><div>You've been selected! Please upload your payment receipt to confirm your spot. Total payable: <strong>RM ${total}</strong></div></div>
+        <div class="field">
+          <label>Upload Payment Receipt</label>
+          <div class="upload-zone" id="rec-zone-${app.eventId}">
+            <input type="file" accept=".pdf,.jpg,.jpeg,.png" onchange="handleReceiptUpload(this,'${app.eventId}')">
+            <div class="upload-zone-icon">📄</div>
+            <div class="upload-zone-label">Click or drag receipt here</div>
+            <div class="upload-zone-hint">PDF, JPG or PNG — bank transfer screenshot accepted</div>
+          </div>
+          <div id="rec-status-${app.eventId}"></div>
+        </div>`:''}
+      ${app.status==='confirmed'?`
+        <div class="alert alert-success"><span class="alert-icon">✓</span><div>Confirmed! Your invoice is ready to download.</div></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-secondary btn-sm" onclick="downloadFile('${app.invoice}')">⬇ Download Invoice</button>
+          ${app.receipt?`<button class="btn btn-ghost btn-sm" onclick="downloadFile('${app.receipt}')">View Receipt</button>`:''}
+        </div>`:''}
+      ${app.status==='applied'?`<div class="alert alert-info"><span class="alert-icon">⏳</span><div>Application received. We'll notify you within 3–5 days.</div></div>`:''}`
+      +`</div>`;
+  }).join('');
+}
+
+function handleReceiptUpload(input,eventId){
+  const file=input.files[0]; if(!file) return;
+  const zone=document.getElementById('rec-zone-'+eventId);
+  zone.classList.add('has-file');
+  zone.querySelector('.upload-zone-label').textContent='✓ '+file.name;
+  document.getElementById('rec-status-'+eventId).innerHTML=`<div class="alert alert-success" style="margin-top:8px"><span class="alert-icon">✓</span><div>Receipt uploaded. We'll confirm within 24 hours.</div></div>`;
+  const v=S.vendorSession;const apps=S.myEventApps[v.id];
+  if(apps){const a=apps.find(x=>x.eventId===eventId);if(a)a.receipt=file.name}
+  showToast('Receipt uploaded successfully!','success');
+}
+
+function renderVendorDocs(){
+  const v=S.vendorSession;
+  const myApps=S.myEventApps[v.id]||[];
+  const rows=[];
+  myApps.forEach(app=>{
+    if(app.invoice)rows.push(`<tr><td>Invoice</td><td style="color:var(--text2)">${app.eventName}</td><td style="color:var(--text2)">—</td><td><span class="badge badge-approved">Available</span></td><td><button class="btn btn-ghost btn-sm" onclick="downloadFile('${app.invoice}')">⬇</button></td></tr>`);
+    if(app.receipt)rows.push(`<tr><td>Payment Receipt</td><td style="color:var(--text2)">${app.eventName}</td><td style="color:var(--text2)">—</td><td><span class="badge badge-approved">Submitted</span></td><td><button class="btn btn-ghost btn-sm">View</button></td></tr>`);
+  });
+  document.getElementById('vt-docs-table').innerHTML=rows.length?rows.join(''):`<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--text3)">No documents yet</td></tr>`;
+}
+
+function vpTab(btn,tabId){
+  ['vt-status','vt-events','vt-myevents','vt-docs'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none'});
+  document.querySelectorAll('#view-portal-dashboard .pill-tab').forEach(el=>el.classList.remove('active'));
+  document.getElementById(tabId).style.display='block';btn.classList.add('active');
+}
+
+function openApplyEvent(eventId){
+  S.pendingEventId=eventId;
+  const ev=S.events.find(e=>e.id===eventId);
+  const v=S.vendorSession;const fnb=isFnbVendor(v);
+  const fee=fnb?ev.feeFnb:ev.feeNonfnb;const total=fee*ev.days;
+  const dateRange=formatDateRange(ev.dateStart,ev.dateEnd);
+  document.getElementById('mae-body').innerHTML=`
+    <div class="event-card" style="margin-bottom:1rem">
+      <div style="background:var(--accent);color:white;border-radius:var(--radius);padding:8px 14px;text-align:center;min-width:54px;flex-shrink:0">
+        <div class="date-month">${ev.month}</div><div class="date-day">${ev.day}</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">${ev.name}</div>
+        <div class="event-meta"><span>📍 ${ev.venue}</span><span>🗓 ${dateRange}</span></div>
+        <div class="event-fee-box">
+          <span class="fee-pill ${fnb?'fnb':'nonfnb'}">RM ${fee}/day</span>
+          <span class="fee-pill">Total (${ev.days} days): <strong>RM ${total}</strong></span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:14px;color:var(--text2);line-height:1.6">By applying you confirm you're available for the full event period and agree to the join fee of <strong>RM ${total}</strong> if selected. Payment is only required upon selection.</p>`;
+  openModal('modal-apply-event');
+}
+
+function confirmEventApplication(){
+  const v=S.vendorSession;const ev=S.events.find(e=>e.id===S.pendingEventId);
+  if(!S.myEventApps[v.id])S.myEventApps[v.id]=[];
+  const already=S.myEventApps[v.id].find(a=>a.eventId===S.pendingEventId);
+  const fnb=isFnbVendor(v);const fee=fnb?ev.feeFnb:ev.feeNonfnb;
+  if(!already){
+    S.myEventApps[v.id].push({eventId:S.pendingEventId,eventName:ev.name,dateStart:ev.dateStart,dateEnd:ev.dateEnd,days:ev.days,fee,status:'applied',receipt:null,invoice:null,isFnb:fnb});
+    if(!S.eventApplications[ev.id])S.eventApplications[ev.id]=[];
+    S.eventApplications[ev.id].push({vendorId:v.id,vendor:v.name,category:v.category,applied:'Today',status:'applied'});
+  }
+  closeModal('modal-apply-event');
+  showToast('Application submitted for '+ev.name+'!','success');
+  renderVendorDashboard();
+}
+
+function downloadFile(name){showToast('Downloading '+name+'...','success')}
+
+// ===== HELPERS =====
+function formatDateRange(start,end){
+  if(!start)return '';
+  const s=new Date(start);const e=new Date(end);
+  const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  if(start===end)return `${s.getDate()} ${mo[s.getMonth()]} ${s.getFullYear()}`;
+  if(s.getMonth()===e.getMonth())return `${s.getDate()}–${e.getDate()} ${mo[s.getMonth()]} ${s.getFullYear()}`;
+  return `${s.getDate()} ${mo[s.getMonth()]} – ${e.getDate()} ${mo[e.getMonth()]} ${e.getFullYear()}`;
+}
+
+function getEventDays(start,end){
+  if(!start||!end)return 1;
+  const s=new Date(start);const e=new Date(end);
+  return Math.max(1,Math.round((e-s)/(1000*60*60*24))+1);
+}
+
+function getDayLabels(start,days){
+  const labels=[];const d=new Date(start);
+  const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  for(let i=0;i<days;i++){
+    labels.push(`Day ${i+1} (${d.getDate()} ${mo[d.getMonth()]})`);
+    d.setDate(d.getDate()+1);
+  }
+  return labels;
+}
+
+
+// ===== BRANDING SETTINGS =====
+function loadSavedSettings(){
+  try{const saved=localStorage.getItem('sulapSiteSettings');if(saved)S.settings={...S.settings,...JSON.parse(saved)}}catch(e){}
+}
+function persistSettings(){try{localStorage.setItem('sulapSiteSettings',JSON.stringify(S.settings))}catch(e){}}
+function applyBrandingSettings(){
+  const st=S.settings||{};
+  const logo=document.getElementById('nav-logo');
+  if(logo){logo.innerHTML=st.logoDataUrl?`<img src="${st.logoDataUrl}" alt="Sulap logo">`:'S'}
+  const badge=document.getElementById('hero-badge-text');
+  if(badge)badge.textContent=st.heroBadge||'';
+  const title=document.getElementById('hero-title-text');
+  if(title)title.innerHTML=(st.heroTitle||'').replace(/\n/g,'<br>');
+  const sub=document.getElementById('hero-subtitle-text');
+  if(sub)sub.textContent=st.heroSubtitle||'';
+}
+function loadBrandingSettingsForm(){
+  const st=S.settings||{};
+  const logoPrev=document.getElementById('settings-logo-preview');
+  if(logoPrev)logoPrev.innerHTML=st.logoDataUrl?`<img src="${st.logoDataUrl}" alt="Logo preview">`:'S';
+  if(document.getElementById('settings-hero-badge'))document.getElementById('settings-hero-badge').value=st.heroBadge||'';
+  if(document.getElementById('settings-hero-title'))document.getElementById('settings-hero-title').value=st.heroTitle||'';
+  if(document.getElementById('settings-hero-subtitle'))document.getElementById('settings-hero-subtitle').value=st.heroSubtitle||'';
+}
+function handleSiteLogo(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{S.settings.logoDataUrl=e.target.result;applyBrandingSettings();loadBrandingSettingsForm();showToast('Logo ready. Click Save Changes to keep it.','success')};
+  reader.readAsDataURL(file);
+}
+function saveBrandingSettings(){
+  S.settings.heroBadge=document.getElementById('settings-hero-badge').value;
+  S.settings.heroTitle=document.getElementById('settings-hero-title').value;
+  S.settings.heroSubtitle=document.getElementById('settings-hero-subtitle').value;
+  persistSettings();applyBrandingSettings();dbSaveSiteSettings().then(ok=>showToast(ok?'Branding saved to Supabase!':'Branding updated locally. Add Supabase config to save online.', ok?'success':undefined));
+}
+function resetBrandingSettings(){
+  S.settings={logoDataUrl:null,heroBadge:'🌿 Now accepting 2025 applications',heroTitle:'Bringing artisan makers\nto <span>Sulap Markets</span>',heroSubtitle:'Apply to become a Sulap vendor, showcase your craft at curated artisan markets, and manage everything from one place.'};
+  persistSettings();applyBrandingSettings();loadBrandingSettingsForm();showToast('Demo branding restored.','success');
+}
+
+// ===== PER-EVENT EXPORTS =====
+function downloadCsv(filename,header,rows){
+  const csv=[header,...rows].map(r=>r.map(c=>`"${String(c??'').replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;a.click();
+}
+function eventExportName(prefix,eventId){const ev=S.events.find(e=>e.id===eventId);return `${prefix}-${(ev?ev.name:eventId).replace(/[^a-z0-9]+/gi,'-').replace(/^-|-$/g,'').toLowerCase()}-${new Date().toISOString().slice(0,10)}.csv`}
+function exportEventApplications(){
+  const eventId=document.getElementById('ea-event-select').value;const ev=S.events.find(e=>e.id===eventId);const apps=S.eventApplications[eventId]||[];
+  const header=['Event ID','Event Name','Vendor ID','Vendor','Category','Applied Date','Application Status'];
+  const rows=apps.map(a=>[eventId,ev?ev.name:'',a.vendorId,a.vendor,a.category,a.applied,a.status]);
+  downloadCsv(eventExportName('event-applications',eventId),header,rows);showToast('Event applications exported!','success');
+}
+function exportPayments(){
+  const eventId=document.getElementById('pay-event-filter').value||S.events[0].id;const rowsData=S.payments.filter(p=>p.eventId===eventId);
+  const header=['Event ID','Event Name','Vendor ID','Vendor','Join Fee','Receipt File','Receipt Date','Invoice File','Invoice Date','Payment Status'];
+  const rows=rowsData.map(p=>[p.eventId,p.event,p.vendorId,p.vendor,p.fee,p.receipt||'',p.receiptDate||'',p.invoice||'',p.invoiceDate||'',p.status]);
+  downloadCsv(eventExportName('payments-invoices',eventId),header,rows);showToast('Payments & invoices exported!','success');
+}
+function exportParking(){
+  const eventId=document.getElementById('parking-event-select').value;const ev=S.events.find(e=>e.id===eventId);const apps=(S.eventApplications[eventId]||[]).filter(a=>a.status==='selected'||a.status==='confirmed');
+  const dayLabels=getDayLabels(ev.dateStart,ev.days);const header=['Event ID','Event Name','Vendor ID','Vendor','Car Plate',...dayLabels.map(d=>d+' Parking Serial')];
+  const rows=apps.map(a=>{const v=S.vendors.find(x=>x.id===a.vendorId)||{};return [eventId,ev.name,a.vendorId,a.vendor,v.carplate||'',...dayLabels.map((_,di)=>(ev.parkingData||{})[`${a.vendorId}_${di}`]||'')]});
+  downloadCsv(eventExportName('parking',eventId),header,rows);showToast('Parking exported!','success');
+}
+function exportVendorPass(){
+  const eventId=document.getElementById('vpass-event-select').value;const ev=S.events.find(e=>e.id===eventId);const apps=(S.eventApplications[eventId]||[]).filter(a=>a.status==='selected'||a.status==='confirmed');
+  const header=['Event ID','Event Name','Vendor ID','Vendor','Car Plate','Collected By','Collector Phone','Tags Issued','Collection Date','Tags Returned','Return Date','Status'];
+  const rows=apps.map(a=>{const v=S.vendors.find(x=>x.id===a.vendorId)||{};const pass=(ev.passData||{})[a.vendorId]||{};const status=pass.returnDate?'Returned':pass.collectedBy?'Collected':'Pending';return [eventId,ev.name,a.vendorId,a.vendor,v.carplate||'',pass.collectedBy||'',pass.collectorPhone||'',pass.issued||'',pass.collectDate||'',pass.returned||'',pass.returnDate||'',status]});
+  downloadCsv(eventExportName('vendor-pass',eventId),header,rows);showToast('Vendor pass exported!','success');
+}
+
+// ===== ADMIN =====
+function adminLogin(){
+  S.adminSession=true;showView('admin-dashboard');
+}
+
+function renderAdminDashboard(){
+  populateEventSelects();
+  renderAdminVendors();renderAdminEvents();renderEventApps();renderAdminPayments();renderParking();renderVendorPass();loadBrandingSettingsForm();
+}
+
+function populateEventSelects(){
+  const ids=['ea-event-select','pay-event-filter','parking-event-select','vpass-event-select'];
+  ids.forEach(id=>{
+    const sel=document.getElementById(id);if(!sel)return;
+    const isPayFilter=id==='pay-event-filter';
+    sel.innerHTML=(isPayFilter?'<option value="">All Events</option>':'')+S.events.map(ev=>`<option value="${ev.id}">${ev.name}</option>`).join('');
+  });
+}
+
+function renderAdminVendors(){
+  const q=(document.getElementById('vendor-search')||{}).value||'';
+  const fs=(document.getElementById('vendor-filter-status')||{}).value||'';
+  const filtered=S.vendors.filter(v=>{
+    const qm=!q||v.name.toLowerCase().includes(q.toLowerCase())||v.email.toLowerCase().includes(q.toLowerCase())||v.category.toLowerCase().includes(q.toLowerCase());
+    const sm=!fs||v.status===fs;return qm&&sm;
+  });
+  document.getElementById('admin-vendors-tbody').innerHTML=filtered.map(v=>`
+    <tr>
+      <td><div style="display:flex;align-items:center;gap:10px">
+        <div class="v-avatar">${v.name.charAt(0)}</div>
+        <div><div style="font-weight:500;font-size:13px">${v.name}</div><div style="font-size:12px;color:var(--text2)">${v.email}</div></div>
+      </div></td>
+      <td><span class="tag ${v.category==='Food & Beverage (F&B)'?'fnb':'nonfnb'}">${v.category}</span></td>
+      <td style="font-size:13px;color:var(--text2)">${v.location}</td>
+      <td style="font-size:13px;font-weight:500">${v.carplate||'—'}</td>
+      <td style="font-size:12px;color:var(--text2)">${v.date}</td>
+      <td><span class="badge badge-${v.status}">${v.status.charAt(0).toUpperCase()+v.status.slice(1)}</span></td>
+      <td><div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" onclick="viewVendorDetail('${v.id}')">View</button>
+        ${v.status==='pending'?`<button class="btn btn-success btn-sm" onclick="quickStatus('${v.id}','approved')">✓</button><button class="btn btn-danger btn-sm" onclick="quickStatus('${v.id}','rejected')">✗</button>`:''}
+      </div></td>
+    </tr>`).join('')||`<tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--text3)">No vendors found</td></tr>`;
+}
+
+function renderAdminEvents(){
+  document.getElementById('admin-events-list').innerHTML=S.events.map(ev=>{
+    const apps=S.eventApplications[ev.id]||[];
+    const selected=apps.filter(a=>a.status==='selected'||a.status==='confirmed').length;
+    const confirmed=apps.filter(a=>a.status==='confirmed').length;
+    const dateRange=formatDateRange(ev.dateStart,ev.dateEnd);
+    return `<div class="event-card">
+      ${ev.pic?`<img src="${ev.pic}" class="event-pic-thumb">`:`<div class="event-pic-placeholder">📸</div>`}
+      <div style="background:var(--accent);color:white;border-radius:var(--radius);padding:8px 14px;text-align:center;min-width:54px;flex-shrink:0">
+        <div class="date-month">${ev.month}</div><div class="date-day">${ev.day}</div>
+        <div style="font-size:10px;opacity:.8;margin-top:2px">${ev.days}d</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">${ev.name}</div>
+        <div class="event-meta"><span>📍 ${ev.venue}</span><span>🗓 ${dateRange} (${ev.days} days)</span><span>🕒 ${ev.time}</span></div>
+        <div class="event-fee-box">
+          <span class="fee-pill fnb">F&B: RM ${ev.feeFnb}/day</span>
+          <span class="fee-pill nonfnb">Non F&B: RM ${ev.feeNonfnb}/day</span>
+        </div>
+        <div style="font-size:12px;color:var(--text2);margin-top:6px">${apps.length} applied · ${selected} selected · ${confirmed} confirmed</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;flex-shrink:0">
+        <span class="badge badge-${ev.status}">${ev.status}</span>
+        <button class="btn btn-ghost btn-sm" onclick="switchToEventApps('${ev.id}')">Manage →</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function switchToEventApps(eventId){
+  const sel=document.getElementById('ea-event-select');
+  if(sel)sel.value=eventId;
+  adminTab(document.querySelectorAll('#view-admin-dashboard .pill-tab')[2],'at-eventapps');
+  renderEventApps();
+}
+
+function renderEventApps(){
+  const sel=document.getElementById('ea-event-select');
+  const eventId=sel?sel.value:S.events[0].id;
+  const apps=S.eventApplications[eventId]||[];
+  document.getElementById('admin-ea-tbody').innerHTML=apps.map((a,i)=>`
+    <tr>
+      <td><div style="display:flex;align-items:center;gap:10px">
+        <div class="v-avatar">${a.vendor.charAt(0)}</div>
+        <div style="font-weight:500;font-size:13px">${a.vendor}</div>
+      </div></td>
+      <td><span class="tag ${a.category==='Food & Beverage (F&B)'?'fnb':'nonfnb'}">${a.category}</span></td>
+      <td style="font-size:12px;color:var(--text2)">${a.applied}</td>
+      <td><span class="badge badge-${a.status}">${a.status.charAt(0).toUpperCase()+a.status.slice(1)}</span></td>
+      <td><div style="display:flex;gap:6px;flex-wrap:wrap">
+        ${a.status==='applied'?`<button class="btn btn-success btn-sm" onclick="selectEventApp('${eventId}',${i})">Select</button><button class="btn btn-danger btn-sm" onclick="declineEventApp('${eventId}',${i})">Decline</button>`:''}
+        ${a.status==='selected'?`<button class="btn btn-indigo btn-sm" onclick="openInvoiceUpload('${a.vendor}','${eventId}')">Upload Invoice</button>`:''}
+        ${a.status==='confirmed'?`<span style="font-size:12px;color:var(--green)">✓ Confirmed</span>`:''}
+      </div></td>
+    </tr>`).join('')||`<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--text3)">No applications for this event</td></tr>`;
+}
+
+function selectEventApp(eventId,idx){S.eventApplications[eventId][idx].status='selected';renderEventApps();showToast('Vendor selected!','success')}
+function declineEventApp(eventId,idx){S.eventApplications[eventId][idx].status='declined';renderEventApps();showToast('Application declined.')}
+
+function renderAdminPayments(){
+  const filterEvId=(document.getElementById('pay-event-filter')||{}).value||'';
+  const filtered=filterEvId?S.payments.filter(p=>p.eventId===filterEvId):S.payments;
+  document.getElementById('admin-payments-tbody').innerHTML=filtered.map(p=>`
+    <tr>
+      <td><div style="font-weight:500;font-size:13px">${p.vendor}</div></td>
+      <td style="font-size:12px;color:var(--text2)">${p.event}</td>
+      <td style="font-weight:500">${p.fee}</td>
+      <td>${p.receipt?`<button class="btn btn-ghost btn-sm" onclick="downloadFile('${p.receipt}')">📄 View</button>`:`<span style="font-size:12px;color:var(--text3)">Not uploaded</span>`}</td>
+      <td>${p.invoice?`<button class="btn btn-ghost btn-sm" onclick="downloadFile('${p.invoice}')">📄 View</button>`:`<button class="btn btn-indigo btn-sm" onclick="openInvoiceUpload('${p.vendor}','${p.eventId}')">Upload</button>`}</td>
+      <td><span class="badge badge-${p.status}">${p.status.replace('-',' ')}</span></td>
+    </tr>`).join('')||`<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text3)">No payments found</td></tr>`;
+}
+
+// ===== PARKING =====
+function renderParking(){
+  const sel=document.getElementById('parking-event-select');if(!sel)return;
+  const eventId=sel.value;
+  const ev=S.events.find(e=>e.id===eventId);if(!ev)return;
+  if(!ev.parkingData)ev.parkingData={};
+  const apps=S.eventApplications[eventId]||[];
+  const confirmedVendors=apps.filter(a=>a.status==='selected'||a.status==='confirmed');
+  const dayLabels=getDayLabels(ev.dateStart,ev.days);
+
+  if(!confirmedVendors.length){
+    document.getElementById('parking-table-wrap').innerHTML=`<div class="empty-state"><div class="empty-icon">🅿️</div><div class="empty-title">No confirmed vendors yet</div><div class="empty-sub">Select vendors for this event first</div></div>`;
+    return;
+  }
+
+  const cols=dayLabels.map(d=>`<th class="parking-day-col">${d} — Serial No.</th>`).join('');
+  const rows=confirmedVendors.map(a=>{
+    const v=S.vendors.find(x=>x.id===a.vendorId)||{carplate:'—'};
+    const cells=dayLabels.map((_,di)=>{
+      const key=`${a.vendorId}_${di}`;
+      const val=(ev.parkingData[key]||'');
+      return `<td><input class="parking-input ${val?'filled':''}" type="text" placeholder="Serial no." value="${val}" onchange="saveParkingSerial('${eventId}','${a.vendorId}',${di},this)"></td>`;
+    }).join('');
+    return `<tr><td><div style="display:flex;align-items:center;gap:8px"><div class="v-avatar">${a.vendor.charAt(0)}</div><div><div style="font-weight:500;font-size:13px">${a.vendor}</div><div style="font-size:12px;color:var(--text2)">🚗 ${v.carplate||'—'}</div></div></div></td>${cells}</tr>`;
+  }).join('');
+
+  document.getElementById('parking-table-wrap').innerHTML=`
+    <div class="table-container"><table>
+      <thead><tr><th>Vendor</th>${cols}</tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>`;
+}
+
+function saveParkingSerial(eventId,vendorId,dayIdx,input){
+  const ev=S.events.find(e=>e.id===eventId);if(!ev)return;
+  if(!ev.parkingData)ev.parkingData={};
+  const key=`${vendorId}_${dayIdx}`;
+  ev.parkingData[key]=input.value.trim();
+  input.classList.toggle('filled',!!input.value.trim());
+  if(input.value.trim())showToast('Parking serial saved','success');
+}
+
+// ===== VENDOR PASS =====
+function renderVendorPass(){
+  const sel=document.getElementById('vpass-event-select');if(!sel)return;
+  const eventId=sel.value;
+  const ev=S.events.find(e=>e.id===eventId);if(!ev)return;
+  if(!ev.passData)ev.passData={};
+  const apps=S.eventApplications[eventId]||[];
+  const confirmedVendors=apps.filter(a=>a.status==='selected'||a.status==='confirmed');
+
+  if(!confirmedVendors.length){
+    document.getElementById('vpass-tbody').innerHTML=`<tr><td colspan="10" style="text-align:center;padding:2rem;color:var(--text3)">No confirmed vendors for this event</td></tr>`;
+    return;
+  }
+
+  document.getElementById('vpass-tbody').innerHTML=confirmedVendors.map(a=>{
+    const pass=ev.passData[a.vendorId]||{};
+    const statusBadge=pass.returnDate?'badge-returned':pass.collectedBy?'badge-collected':'badge-pending';
+    const statusLabel=pass.returnDate?'Returned':pass.collectedBy?'Collected':'Pending';
+    return `<tr>
+      <td><div style="display:flex;align-items:center;gap:8px"><div class="v-avatar">${a.vendor.charAt(0)}</div><div style="font-weight:500;font-size:13px">${a.vendor}</div></div></td>
+      <td style="font-size:12px;font-weight:500">${(S.vendors.find(x=>x.id===a.vendorId)||{carplate:'—'}).carplate||'—'}</td>
+      <td style="font-size:13px">${pass.collectedBy||'<span style="color:var(--text3)">—</span>'}</td>
+      <td style="font-size:13px">${pass.collectorPhone||'<span style="color:var(--text3)">—</span>'}</td>
+      <td style="font-size:13px;text-align:center">${pass.issued||'<span style="color:var(--text3)">—</span>'}</td>
+      <td style="font-size:12px;color:var(--text2)">${pass.collectDate||'<span style="color:var(--text3)">—</span>'}</td>
+      <td style="font-size:13px;text-align:center">${pass.returned!==undefined?pass.returned:'<span style="color:var(--text3)">—</span>'}</td>
+      <td style="font-size:12px;color:var(--text2)">${pass.returnDate||'<span style="color:var(--text3)">—</span>'}</td>
+      <td><span class="badge ${statusBadge}">${statusLabel}</span></td>
+      <td><button class="btn btn-ghost btn-sm" onclick="openVendorPassModal('${eventId}','${a.vendorId}','${a.vendor}')">Edit</button></td>
+    </tr>`;
+  }).join('');
+}
+
+function openVendorPassModal(eventId,vendorId,vendorName){
+  S.editingPassKey={eventId,vendorId};
+  document.getElementById('vpm-vendor-name').textContent=vendorName;
+  const ev=S.events.find(e=>e.id===eventId);
+  const pass=(ev&&ev.passData&&ev.passData[vendorId])||{};
+  document.getElementById('vpm-collector').value=pass.collectedBy||'';
+  document.getElementById('vpm-collector-phone').value=pass.collectorPhone||'';
+  document.getElementById('vpm-issued').value=pass.issued||'';
+  document.getElementById('vpm-collect-date').value=pass.collectDate||'';
+  document.getElementById('vpm-returned').value=pass.returned!==undefined?pass.returned:'';
+  document.getElementById('vpm-return-date').value=pass.returnDate||'';
+  openModal('modal-vendor-pass');
+}
+
+function saveVendorPass(){
+  const {eventId,vendorId}=S.editingPassKey;
+  const ev=S.events.find(e=>e.id===eventId);
+  if(!ev.passData)ev.passData={};
+  ev.passData[vendorId]={
+    collectedBy:document.getElementById('vpm-collector').value,
+    collectorPhone:document.getElementById('vpm-collector-phone').value,
+    issued:document.getElementById('vpm-issued').value,
+    collectDate:document.getElementById('vpm-collect-date').value,
+    returned:document.getElementById('vpm-returned').value,
+    returnDate:document.getElementById('vpm-return-date').value,
+  };
+  closeModal('modal-vendor-pass');
+  renderVendorPass();
+  showToast('Vendor pass record saved!','success');
+}
+
+// ===== EVENT CREATION =====
+function calcEventDays(){
+  const s=document.getElementById('ne-date-start').value;
+  const e=document.getElementById('ne-date-end').value;
+  const wrap=document.getElementById('ne-days-display');
+  if(s&&e){
+    const days=getEventDays(s,e);
+    document.getElementById('ne-days-text').textContent=`Event duration: ${days} day${days>1?'s':''} (${formatDateRange(s,e)})`;
+    wrap.style.display='block';
+  }else{wrap.style.display='none'}
+}
+
+function handleEventPic(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    S.newEventPicDataUrl=e.target.result;
+    const zone=document.getElementById('ne-pic-zone');
+    zone.classList.add('has-file');
+    zone.querySelector('.upload-zone-label').textContent='✓ '+file.name;
+  };
+  reader.readAsDataURL(file);
+}
+
+async function createEvent(){
+  const name=document.getElementById('ne-name').value.trim();
+  const s=document.getElementById('ne-date-start').value;
+  const e=document.getElementById('ne-date-end').value;
+  const venue=document.getElementById('ne-venue').value.trim();
+  if(!name||!s||!e||!venue){showToast('Please fill in name, dates, and venue','error');return}
+  if(new Date(e)<new Date(s)){showToast('End date must be after start date','error');return}
+  const days=getEventDays(s,e);
+  const sd=new Date(s);
+  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const newEv={
+    id:'E'+Date.now(),name,dateStart:s,dateEnd:e,days,
+    month:months[sd.getMonth()],day:String(sd.getDate()),
+    time:document.getElementById('ne-time').value||'TBC',
+    venue,
+    feeFnb:parseInt(document.getElementById('ne-fee-fnb').value)||0,
+    feeNonfnb:parseInt(document.getElementById('ne-fee-nonfnb').value)||0,
+    status:'active',desc:document.getElementById('ne-desc').value,
+    pic:S.newEventPicDataUrl||null,
+    parkingData:{},passData:{},
+  };
+
+  if(db){
+    const btn = document.querySelector('#modal-new-event .btn-primary');
+    const oldText = btn ? btn.textContent : '';
+    if(btn){btn.disabled=true;btn.textContent='Creating...'}
+    const {error}=await db.from('events').insert({
+      id:newEv.id,
+      name:newEv.name,
+      date_start:newEv.dateStart,
+      date_end:newEv.dateEnd,
+      time_text:newEv.time,
+      venue:newEv.venue,
+      fee_fnb:newEv.feeFnb,
+      fee_nonfnb:newEv.feeNonfnb,
+      status:newEv.status,
+      description:newEv.desc,
+      image_url:newEv.pic
+    });
+    if(btn){btn.disabled=false;btn.textContent=oldText}
+    if(error){showToast('Event was not created: '+error.message,'error');return}
+  }
+
+  S.events.push(newEv);
+  S.eventApplications[newEv.id]=[];
+  S.newEventPicDataUrl=null;
+  document.getElementById('stat-events').textContent=S.events.length;
+  closeModal('modal-new-event');
+  renderAdminEvents();populateEventSelects();
+  showToast(db?'Event created and saved to Supabase!':'Event created in demo mode only. Add Supabase config to save online.','success');
+}
+
+function adminTab(btn,tabId){
+  ['at-vendors','at-events','at-eventapps','at-payments','at-parking','at-vendorpass','at-settings'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none'});
+  document.querySelectorAll('#view-admin-dashboard .pill-tab').forEach(el=>el.classList.remove('active'));
+  document.getElementById(tabId).style.display='block';btn.classList.add('active');
+  if(tabId==='at-parking')renderParking();
+  if(tabId==='at-vendorpass')renderVendorPass();
+  if(tabId==='at-payments')renderAdminPayments();
+}
+
+// ===== VENDOR DETAIL =====
+function viewVendorDetail(id){
+  const v=S.vendors.find(x=>x.id===id);S.currentVendorId=id;
+  document.getElementById('mvd-title').textContent=v.name;
+  const social=[v.instagram&&`📸 ${v.instagram}`,v.facebook&&`📘 ${v.facebook}`,v.tiktok&&`🎵 ${v.tiktok}`].filter(Boolean).join('  ')||'—';
+  document.getElementById('mvd-body').innerHTML=`
+    <div style="margin-bottom:1rem">
+      ${[['Reference ID',v.id],['Contact',v.contact],['Email',v.email],['Category',v.category],['Location',v.location],['Car Plate',v.carplate||'—'],['Submitted',v.date],['Status',`<span class="badge badge-${v.status}">${v.status}</span>`],['Social',social],['Photos',v.photos+' submitted']].map(([k,val])=>
+        `<div class="kv-row"><div class="kv-key">${k}</div><div class="kv-val">${val}</div></div>`).join('')}
+    </div>
+    <div style="background:var(--bg2);border-radius:var(--radius);padding:1rem;margin-bottom:1rem">
+      <div style="font-size:12px;font-weight:500;color:var(--text2);margin-bottom:6px">BUSINESS DESCRIPTION</div>
+      <p style="font-size:13px;line-height:1.7">${v.desc}</p>
+    </div>
+    ${v.power?`<div style="background:var(--amber-light);border-radius:var(--radius);padding:1rem;margin-bottom:1rem"><div style="font-size:12px;font-weight:500;color:var(--amber);margin-bottom:4px">⚡ POWER REQUIREMENTS</div><p style="font-size:13px;color:var(--amber)">${v.power}</p></div>`:''}
+    <div>
+      <div style="font-size:12px;font-weight:500;color:var(--text2);margin-bottom:8px">PRODUCT PHOTOS</div>
+      <div class="photos-grid">${Array(v.photos).fill(0).map((_,i)=>`<div class="photo-thumb" style="background:hsl(${25+i*15},30%,${80-i*5}%);border-style:solid"><span style="font-size:20px">🖼️</span></div>`).join('')}</div>
+    </div>`;
+  openModal('modal-vendor-detail');
+}
+
+function approveVendor(){const v=S.vendors.find(x=>x.id===S.currentVendorId);if(v)v.status='approved';closeModal('modal-vendor-detail');renderAdminVendors();showToast('Vendor approved!','success')}
+function rejectVendor(){const v=S.vendors.find(x=>x.id===S.currentVendorId);if(v)v.status='rejected';closeModal('modal-vendor-detail');renderAdminVendors();showToast('Vendor rejected.')}
+function quickStatus(id,status){const v=S.vendors.find(x=>x.id===id);if(v)v.status=status;renderAdminVendors();showToast(`Vendor ${status}!`,status==='approved'?'success':undefined)}
+
+function openInvoiceUpload(vendor,eventId){
+  S.pendingInvoiceVendorId={vendor,eventId};
+  document.getElementById('uinv-label').textContent=`Upload invoice for ${vendor}`;
+  document.getElementById('inv-upload-status').innerHTML='';
+  const zone=document.getElementById('inv-upload-zone');
+  zone.classList.remove('has-file');zone.querySelector('.upload-zone-label').textContent='Click or drag to upload invoice';
+  openModal('modal-upload-invoice');
+}
+function handleInvoiceFile(input){
+  const file=input.files[0];if(!file)return;
+  const zone=document.getElementById('inv-upload-zone');
+  zone.classList.add('has-file');zone.querySelector('.upload-zone-label').textContent='✓ '+file.name;
+  document.getElementById('inv-upload-status').innerHTML=`<div class="alert alert-success" style="margin-top:8px"><span class="alert-icon">✓</span><div>${file.name} ready to upload</div></div>`;
+}
+function confirmInvoiceUpload(){
+  const{vendor}=S.pendingInvoiceVendorId;
+  const pay=S.payments.find(p=>p.vendor===vendor);
+  if(pay){pay.invoice='INV-'+Date.now()+'.pdf';pay.invoiceDate=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}
+  closeModal('modal-upload-invoice');renderAdminPayments();showToast('Invoice uploaded & vendor notified!','success');
+}
+
+function exportCSV(){
+  const header=['Vendor ID','Business Name','Contact','Email','Category','Location','Car Plate','Submitted','Status','Instagram','Facebook','TikTok','Power Needed'];
+  const rows=S.vendors.map(v=>[v.id,v.name,v.contact,v.email,v.category,v.location,v.carplate||'',v.date,v.status,v.instagram||'',v.facebook||'',v.tiktok||'',v.power||'']);
+  const csv=[header,...rows].map(r=>r.map(c=>`"${c}"`).join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='sulap-vendors-'+new Date().toISOString().slice(0,10)+'.csv';a.click();
+  showToast('CSV exported! Import to Google Sheets via File → Import.','success');
+}
+
+// ===== MODAL =====
+function openModal(id){document.getElementById(id).classList.add('open')}
+function closeModal(id){document.getElementById(id).classList.remove('open')}
+document.querySelectorAll('.modal-overlay').forEach(el=>{
+  el.addEventListener('click',e=>{if(e.target===el)el.classList.remove('open')})
+});
+
+// ===== TOAST =====
+let toastTimer;
+function showToast(msg,type){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast'+(type?' toast-'+type:'');
+  void t.offsetWidth;t.classList.add('show');
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// ===== AUTH =====
+function logout(){
+  S.vendorSession=null;S.adminSession=false;
+  document.getElementById('nav-user-display').style.display='none';
+  showView('home');showToast('Signed out.');
+}
+
+// ===== INIT =====
+loadSavedSettings();
+applyBrandingSettings();
+showView('home');
+dbBoot();
+</script>
+
+
+</body></html>
